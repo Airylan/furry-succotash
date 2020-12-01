@@ -5,7 +5,8 @@ module.exports = {
     },
     mode: "development",
     output: {
-        filename: "./[name]-bundle.js"
+        filename: "./[name]-bundle.js",
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.Webpack.js', '.web.js', '.ts', '.js', '.jsx', '.tsx'],
@@ -13,6 +14,9 @@ module.exports = {
             "crypto": require.resolve("crypto-js"),
             "stream": require.resolve("stream-browserify")
         }
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     module: {
         rules: [
