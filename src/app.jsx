@@ -100,7 +100,7 @@ const TitleBar = (props) => {
     };
 
     return (<React.Fragment>
-        <AppBar position="fixed" className={clsx(classes.appBar, {
+        <AppBar position="absolute" className={clsx(classes.appBar, {
             [classes.appBarShift]: drawerIsOpen,
         })}>
             <Toolbar>
@@ -176,12 +176,12 @@ const App = (props) => {
         <TitleBar drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} />
         <NavBar drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} />
         {/* Main body is the router switch */}
-        <div className={classes.offset} />
         <main
             className={clsx(classes.content, {
                 [classes.contentShift]: drawerIsOpen,
             })}
         >
+            <div className={classes.offset} />
             <Switch>
                 <Route path="/article/:articleId">
                     <Article />
