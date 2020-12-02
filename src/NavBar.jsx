@@ -7,7 +7,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { useStyles } from './app';
+import { useStyles } from './styles';
 
 export const NavBar = (props) => {
     const classes = useStyles();

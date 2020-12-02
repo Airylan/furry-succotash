@@ -4,7 +4,7 @@ import { useTheme } from '@material-ui/core/styles';
 import { useLocation } from "react-router-dom";
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import { useStyles } from './app';
+import { useStyles } from './styles';
 
 export const TitleBar = (props) => {
     const classes = useStyles();

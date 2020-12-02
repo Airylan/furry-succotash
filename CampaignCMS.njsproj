@@ -42,6 +42,15 @@
     <Content Include="src\app.jsx">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\Article.jsx" />
+    <Content Include="src\campaignStore.jsx">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\NavBar.jsx" />
+    <Content Include="src\styles.jsx">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\TitleBar.jsx" />
     <Content Include="webpack.config.js">
       <SubType>Code</SubType>
     </Content>

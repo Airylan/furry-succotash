@@ -8,79 +8,39 @@ import {
     Link,
     BrowserRouter} from "react-router-dom";
 
-import { Typography, CssBaseline } from '@material-ui/core';
+import { Typography, CssBaseline, Paper, Divider } from '@material-ui/core';
 import { NavBar } from './NavBar';
 import { Article } from './Article';
 import { TitleBar } from './TitleBar';
+import { useStyles } from './styles';
+import { useCampaign } from './campaignStore';
 
 const NoRoute = (props) => {
     return (<Typography paragraph>Content not found.</Typography>);
 };
 
-const drawerWidth = 240;
+function CampaignDetails() {
+    const [campaign] = useCampaign();
 
-export const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
-    appBar: {
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-    },
-    appBarShift: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    hide: {
-        display: 'none',
-    },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    drawerHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
-        ...theme.mixins.toolbar,
-        justifyContent: 'flex-end',
-    },
-    offset: theme.mixins.toolbar,
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        marginLeft: -drawerWidth,
-    },
-    contentShift: {
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-        marginLeft: 0,
-    },
-}));
+    return (<Paper elevation="2">
+        <Typography variant="h1">{campaign.title}</Typography>
+        <Divider />
+        <Typography variant="h2">Description:</Typography>
+        <Typography>{campaign.description}</Typography>
+        <Divider />
+        <Typography variant="h3" display="inline">Campaign owned by: </Typography><Typography variant="subtitle1" display="inline">{campaign.gm.name}</Typography>
+    </Paper>);
+}
 
 const App = (props) => {
     const classes = useStyles();
     const theme = useTheme();
     const [drawerIsOpen, setDrawerIsOpen] = React.useState(false);
+    const [campaign] = useCampaign();
+
+    useEffect(() => {
+        document.title = campaign.title;
+    }, [campaign.title]);
 
     return (<div className={classes.root}>
         <CssBaseline />
@@ -94,6 +54,9 @@ const App = (props) => {
         >
             <div className={classes.offset} />
             <Switch>
+                <Route path="/" exact>
+                    <CampaignDetails />
+                </Route>
                 <Route path="/article/:articleId">
                     <Article />
                 </Route>
