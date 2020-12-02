@@ -1,40 +1,29 @@
 import React, { useEffect } from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
-import {
-    Switch,
-    Route,
-    Link,
-    BrowserRouter} from "react-router-dom";
+import { Switch, Route, Redirect, BrowserRouter} from "react-router-dom";
 
-import { Typography, CssBaseline, Paper, Divider } from '@material-ui/core';
+import { Typography, CssBaseline } from '@material-ui/core';
 import { NavBar } from './NavBar';
 import { Article } from './Article';
 import { TitleBar } from './TitleBar';
 import { useStyles } from './styles';
 import { useCampaign } from './campaignStore';
+import { CampaignDetails } from './CampaignDetails';
 
-const NoRoute = (props) => {
+const NoRoute = () => {
     return (<Typography paragraph>Content not found.</Typography>);
 };
+const NotImplemented = () => {
+    return (<Typography paragraph>Content not implemented.</Typography>);
+};
 
-function CampaignDetails() {
-    const [campaign] = useCampaign();
+const ArticleList = NotImplemented;
+const CampaignTags = NotImplemented;
 
-    return (<Paper elevation="2">
-        <Typography variant="h1">{campaign.title}</Typography>
-        <Divider />
-        <Typography variant="h2">Description:</Typography>
-        <Typography>{campaign.description}</Typography>
-        <Divider />
-        <Typography variant="h3" display="inline">Campaign owned by: </Typography><Typography variant="subtitle1" display="inline">{campaign.gm.name}</Typography>
-    </Paper>);
-}
-
-const App = (props) => {
+const App = () => {
     const classes = useStyles();
-    const theme = useTheme();
     const [drawerIsOpen, setDrawerIsOpen] = React.useState(false);
     const [campaign] = useCampaign();
 
@@ -54,11 +43,21 @@ const App = (props) => {
         >
             <div className={classes.offset} />
             <Switch>
-                <Route path="/" exact>
+                <Route path="/campaign/:campaignId/articles">
+                    <ArticleList />
+                </Route>
+                <Route path="/campaign/:campaignId/article/:articleId">
+                    <Article />
+                </Route>
+                <Route path="/campaign/:campaignId/tags">
+                    <CampaignTags />
+                </Route>
+                <Route path="/campaign/:campaignId">
                     <CampaignDetails />
                 </Route>
-                <Route path="/article/:articleId">
-                    <Article />
+                <Route path="/" exact>
+                    {/* TODO: Login page, show campaigns list, etc */}
+                    <Redirect to={`/campaign/${campaign.id}`} />
                 </Route>
                 <Route>
                     <NoRoute />
