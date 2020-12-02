@@ -6,32 +6,20 @@ import {
     Switch,
     Route,
     Link,
-    BrowserRouter,
-    useParams,
-    useLocation
-} from "react-router-dom";
+    BrowserRouter} from "react-router-dom";
 
-import { AppBar, IconButton, Toolbar, Typography, CssBaseline, Drawer } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import { Divider, List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { Typography, CssBaseline } from '@material-ui/core';
+import { NavBar } from './NavBar';
+import { Article } from './Article';
+import { TitleBar } from './TitleBar';
 
 const NoRoute = (props) => {
-    return (<Typography variant="h1" paragraph>Hello World!</Typography>);
+    return (<Typography paragraph>Content not found.</Typography>);
 };
 
-const Article = (props) => {
-    const { articleId } = useParams();
-    return (<Typography variant="h2">Requested article {articleId}</Typography>);
-};
-
-// TODO: use theme
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
     },
@@ -88,83 +76,6 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 0,
     },
 }));
-
-const TitleBar = (props) => {
-    const classes = useStyles();
-    const theme = useTheme();
-    const { drawerIsOpen, setDrawerIsOpen, ...rest } = props;
-    const location = useLocation();
-
-    const handleDrawerOpen = () => {
-        setDrawerIsOpen(true);
-    };
-
-    return (<React.Fragment>
-        <AppBar position="absolute" className={clsx(classes.appBar, {
-            [classes.appBarShift]: drawerIsOpen,
-        })}>
-            <Toolbar>
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    onClick={handleDrawerOpen}
-                    edge="start"
-                    className={clsx(classes.menuButton, drawerIsOpen && classes.hide)}
-                >
-                    <MenuIcon />
-                </IconButton>
-                <Typography variant="h6" noWrap>
-                    {location.pathname}
-                </Typography>
-            </Toolbar>
-        </AppBar>
-    </React.Fragment>);
-};
-
-const NavBar = (props) => {
-    const classes = useStyles();
-    const theme = useTheme();
-    const { drawerIsOpen, setDrawerIsOpen, ...rest } = props;
-    const location = useLocation();
-
-    const handleDrawerClose = () => {
-        setDrawerIsOpen(false);
-    };
-
-    return (<Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={drawerIsOpen}
-        classes={{
-            paper: classes.drawerPaper,
-        }}
-    >
-        <div className={classes.drawerHeader}>
-            <IconButton onClick={handleDrawerClose}>
-                {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-            </IconButton>
-        </div>
-        <Divider />
-        <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                <ListItem button key={text}>
-                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
-                </ListItem>
-            ))}
-        </List>
-        <Divider />
-        <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                <ListItem button key={text}>
-                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
-                </ListItem>
-            ))}
-        </List>
-    </Drawer>);
-};
 
 const App = (props) => {
     const classes = useStyles();
