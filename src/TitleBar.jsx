@@ -17,10 +17,10 @@ export const TitleBar = (props) => {
     };
 
     return (<React.Fragment>
-        <AppBar position="absolute" className={clsx(classes.appBar, {
-            [classes.appBarShift]: drawerIsOpen,
-        })}>
-            <Toolbar>
+        <AppBar position="fixed">
+            <Toolbar className={clsx(classes.appBar, {
+                [classes.appBarShift]: drawerIsOpen,
+            })}>
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"
