@@ -49,6 +49,103 @@ const inMemActions = {
             default:
                 return null
         }
+    },
+    fetchArticle: (campaignId, articleId) => {
+        /* actual use would have something like the following LINQ-ish:
+         * from campaign in campaigns
+         * where campaign.Id == campaignId
+         * from article in campaign.Articles
+         * where article.Id == articleId
+         * select article
+         */
+        switch (campaignId) {
+            case "0a": switch (articleId) {
+                case "a1": return {
+                    title: "First Article",
+                    tags: "test",
+                    content: "# First Article\n\nSome markdown goes here\n\n* test list\n\nDon't get squopped!", //md
+                    created: { ooc: "2020-12-03", ic: "2045-10-12" },
+                    playerInfo: {
+                        revealed: false,
+                        content: "Your fixer goes to you one day with a job ..." // md
+                    },
+                    gmInfo: {
+                        content: "Some GM content goes here" // md
+                    }
+                };
+                case "a2": return {
+                    title: "Seconed Article",
+                    tags: "squop",
+                    content: "# Seconed Article\n\nSome markdown goes here\n\n* test list\n\nZoom to the future!", //md
+                    created: { ooc: "2020-12-03", ic: "2045-10-12" },
+                    playerInfo: {
+                        revealed: false,
+                        content: "Your fixer goes to you one day with a job ..." // md
+                    },
+                    gmInfo: {
+                        content: "Some GM content goes here" // md
+                    }
+                };
+                case "a3": return {
+                    title: "Third Article",
+                    tags: "test",
+                    content: "# Third Article\n\nSome markdown goes here\n\n* test list", //md
+                    created: { ooc: "2020-12-03", ic: "2045-10-12" },
+                    playerInfo: {
+                        revealed: false,
+                        content: "Your fixer goes to you one day with a job ..." // md
+                    },
+                    gmInfo: {
+                        content: "Some GM content goes here" // md
+                    }
+                };
+                default: return null;
+            }
+            case "1b": switch (articleId) {
+                case "a1": return {
+                    title: "1b First Article",
+                    tags: "test",
+                    content: "1b\n\n# First Article\n\nSome markdown goes here\n\n* test list\n\nDon't get squopped!", //md
+                    created: { ooc: "2020-12-03", ic: "2045-10-12" },
+                    playerInfo: {
+                        revealed: false,
+                        content: "Your fixer goes to you one day with a job ..." // md
+                    },
+                    gmInfo: {
+                        content: "Some GM content goes here" // md
+                    }
+                };
+                case "a2": return {
+                    title: "1b Seconed Article",
+                    tags: "squop",
+                    content: "1b\n\n# Seconed Article\n\nSome markdown goes here\n\n* test list\n\nZoom to the future!", //md
+                    created: { ooc: "2020-12-03", ic: "2045-10-12" },
+                    playerInfo: {
+                        revealed: false,
+                        content: "Your fixer goes to you one day with a job ..." // md
+                    },
+                    gmInfo: {
+                        content: "Some GM content goes here" // md
+                    }
+                };
+                case "a3": return {
+                    title: "1b Third Article",
+                    tags: "test",
+                    content: "1b\n\n# Third Article\n\nSome markdown goes here\n\n* test list", //md
+                    created: { ooc: "2020-12-03", ic: "2045-10-12" },
+                    playerInfo: {
+                        revealed: false,
+                        content: "Your fixer goes to you one day with a job ..." // md
+                    },
+                    gmInfo: {
+                        content: "Some GM content goes here" // md
+                    }
+                };
+                default: return null;
+            }
+            default: return null;
+        }
+        
     }
 };
 
@@ -80,8 +177,14 @@ const store = createStore({
         ]
     },
     actions: {
-        switchCampaign: (id) => ({ setData }) => {
-            setData(campaignStorage.fetchCampaign(id));
+        // TODO: these will need to be async or subscribe or something to actually talk to the web.
+        switchCampaign: (id) => ({ getState, setState }) => {
+            if (getState().id !== id) {
+                setState(campaignStorage.fetchCampaign(id));
+            }
+        },
+        fetchArticle: (articleId) => ({ getState }) => {
+            return campaignStorage.fetchArticle(getState().id, articleId);
         }
     }
 });

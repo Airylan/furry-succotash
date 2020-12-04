@@ -46,6 +46,9 @@
     <Content Include="src\campaignStore.jsx">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\Markdown.jsx">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\NavBar.jsx" />
     <Content Include="src\styles.jsx">
       <SubType>Code</SubType>

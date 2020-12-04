@@ -13,6 +13,7 @@
     "aws-amplify": "^3.3.10",
     "clsx": "^1.1.1",
     "crypto-js": "^4.0.0",
+    "markdown-to-jsx": "^7.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
