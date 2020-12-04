@@ -1,12 +1,19 @@
-﻿import React from 'react';
+﻿import React, { useEffect } from 'react';
 import { Typography, Paper, Divider, Accordion, AccordionSummary, AccordionDetails, List } from '@material-ui/core';
 import { useCampaign } from './campaignStore';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { TagCloud } from 'react-tagcloud';
 import { ListItemLink } from './ListItemLink';
+import { useParams } from 'react-router-dom';
+import { ArticleList } from './ArticleList';
 
 export const CampaignDetails = () => {
-    const [campaign] = useCampaign();
+    const { campaignId } = useParams();
+    const [campaign, { switchCampaign }] = useCampaign();
+
+    useEffect(() => {
+        switchCampaign(campaignId);
+    }, [campaignId]);
 
     const handleTagClicked = (tag) => {
         // Do nothing for now. Routing to articles later.
@@ -45,14 +52,15 @@ export const CampaignDetails = () => {
                 <Typography variant="subtitle1">Articles</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <List>
+                {/*<List>
                     {campaign.articles.map((article) => {
                         return (<ListItemLink
                             to={`/campaign/${campaign.id}/article/${article.id}`}
                             primary={article.title}
                         />);
                     })}
-                </List>
+                </List>*/}
+                <ArticleList noHeader />
             </AccordionDetails>
         </Accordion>
     </Paper>);

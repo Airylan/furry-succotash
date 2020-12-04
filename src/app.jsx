@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import clsx from 'clsx';
-import { useTheme } from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
 import { Switch, Route, Redirect, BrowserRouter} from "react-router-dom";
 
@@ -11,6 +10,7 @@ import { TitleBar } from './TitleBar';
 import { useStyles } from './styles';
 import { useCampaign } from './campaignStore';
 import { CampaignDetails } from './CampaignDetails';
+import { ArticleList } from './ArticleList';
 
 const NoRoute = () => {
     return (<Typography paragraph>Content not found.</Typography>);
@@ -19,7 +19,7 @@ const NotImplemented = () => {
     return (<Typography paragraph>Content not implemented.</Typography>);
 };
 
-const ArticleList = NotImplemented;
+
 const CampaignTags = NotImplemented;
 
 const App = () => {
