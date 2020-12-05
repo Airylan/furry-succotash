@@ -1,6 +1,7 @@
 ﻿import React, { useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { Divider, Typography, Paper } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { useCampaign } from './campaignStore';
 import { Markdown } from './Markdown';
 import { TagCloud } from 'react-tagcloud';
@@ -13,27 +14,27 @@ export const Article = (props) => {
         switchCampaign(campaignId);
     }, [campaignId]);
 
-    const article = fetchArticle(articleId);
-    const handleTagClick = (e) => {
-        // no-op for now.
+    const markTags = (md) => {
+        return md;
     };
+
+    const article = fetchArticle(articleId);
 
     return (<Paper elevation="2">
         <Typography variant="h1" display="inline">{article?.title}</Typography>
         <Typography variant="subtitle1"> Posted on: {article?.created?.ooc}</Typography>
         <Markdown>
-            {article?.content}
+            {markTags(article?.content)}
         </Markdown>
         <Divider />
         {article?.playerInfo?.revealed
-            ? <><Markdown>{article?.playerInfo?.content}</Markdown><Divider/></>
+            ? <><Markdown>{markTags(article?.playerInfo?.content)}</Markdown><Divider/></>
             : null
         }
         <TagCloud
-            minSize="12"
-            maxSize="12"
+            minSize="8"
+            maxSize="8"
             tags={article?.tags?.map((tag) => { return { value: tag, count: 1 } })}
-            onClick={handleTagClick}
         />
     </Paper>);
 }
