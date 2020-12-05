@@ -5,12 +5,14 @@ import { useLocation } from "react-router-dom";
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useStyles } from './styles';
+import { useCampaign } from './campaignStore';
 
 export const TitleBar = (props) => {
     const classes = useStyles();
     const theme = useTheme();
     const { drawerIsOpen, setDrawerIsOpen, ...rest } = props;
     const location = useLocation();
+    const [campaign] = useCampaign();
 
     const handleDrawerOpen = () => {
         setDrawerIsOpen(true);
@@ -30,7 +32,10 @@ export const TitleBar = (props) => {
                 >
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h6" noWrap>
+                <Typography variant="h6" noWrap inline>
+                    {campaign.title} {/* TODO: title here related to location */}
+                </Typography>
+                <Typography variant="subtitle1">
                     {location.pathname}
                 </Typography>
             </Toolbar>

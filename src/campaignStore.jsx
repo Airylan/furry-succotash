@@ -62,7 +62,7 @@ const inMemActions = {
             case "0a": switch (articleId) {
                 case "a1": return {
                     title: "First Article",
-                    tags: "test",
+                    tags: ["test"],
                     content: "# First Article\n\nSome markdown goes here\n\n* test list\n\nDon't get squopped!", //md
                     created: { ooc: "2020-12-03", ic: "2045-10-12" },
                     playerInfo: {
@@ -75,7 +75,7 @@ const inMemActions = {
                 };
                 case "a2": return {
                     title: "Seconed Article",
-                    tags: "squop",
+                    tags: ["squop"],
                     content: "# Seconed Article\n\nSome markdown goes here\n\n* test list\n\nZoom to the future!", //md
                     created: { ooc: "2020-12-03", ic: "2045-10-12" },
                     playerInfo: {
@@ -88,7 +88,7 @@ const inMemActions = {
                 };
                 case "a3": return {
                     title: "Third Article",
-                    tags: "test",
+                    tags: ["test"],
                     content: "# Third Article\n\nSome markdown goes here\n\n* test list", //md
                     created: { ooc: "2020-12-03", ic: "2045-10-12" },
                     playerInfo: {
@@ -104,7 +104,7 @@ const inMemActions = {
             case "1b": switch (articleId) {
                 case "a1": return {
                     title: "1b First Article",
-                    tags: "test",
+                    tags: ["test"],
                     content: "1b\n\n# First Article\n\nSome markdown goes here\n\n* test list\n\nDon't get squopped!", //md
                     created: { ooc: "2020-12-03", ic: "2045-10-12" },
                     playerInfo: {
@@ -117,7 +117,7 @@ const inMemActions = {
                 };
                 case "a2": return {
                     title: "1b Seconed Article",
-                    tags: "squop",
+                    tags: ["squop"],
                     content: "1b\n\n# Seconed Article\n\nSome markdown goes here\n\n* test list\n\nZoom to the future!", //md
                     created: { ooc: "2020-12-03", ic: "2045-10-12" },
                     playerInfo: {
@@ -130,7 +130,7 @@ const inMemActions = {
                 };
                 case "a3": return {
                     title: "1b Third Article",
-                    tags: "test",
+                    tags: ["test"],
                     content: "1b\n\n# Third Article\n\nSome markdown goes here\n\n* test list", //md
                     created: { ooc: "2020-12-03", ic: "2045-10-12" },
                     playerInfo: {
