@@ -22,7 +22,7 @@ export const Article = (props) => {
 
     return (<Paper elevation="2">
         <Typography variant="h1" display="inline">{article?.title}</Typography>
-        <Typography variant="subtitle1"> Posted on: {article?.created?.ooc}</Typography>
+        <Typography variant="subtitle1" display="inline"> Posted on: {article?.created?.ooc}</Typography>
         <Markdown>
             {markTags(article?.content)}
         </Markdown>

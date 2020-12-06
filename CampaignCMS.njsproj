@@ -54,6 +54,7 @@
     <Content Include="src\styles.jsx">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\Tag.jsx" />
     <Content Include="src\TitleBar.jsx" />
     <Content Include="webpack.config.js">
       <SubType>Code</SubType>

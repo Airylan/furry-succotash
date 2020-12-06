@@ -11,6 +11,7 @@ import { useStyles } from './styles';
 import { useCampaign } from './campaignStore';
 import { CampaignDetails } from './CampaignDetails';
 import { ArticleList } from './ArticleList';
+import { Tag } from './Tag';
 
 const NoRoute = () => {
     return (<Typography paragraph>Content not found.</Typography>);
@@ -18,7 +19,6 @@ const NoRoute = () => {
 const NotImplemented = () => {
     return (<Typography paragraph>Content not implemented.</Typography>);
 };
-
 
 const CampaignTags = NotImplemented;
 
@@ -48,6 +48,9 @@ const App = () => {
                 </Route>
                 <Route path="/campaign/:campaignId/article/:articleId">
                     <Article />
+                </Route>
+                <Route path="/campaign/:campaignId/tag/:tagId">
+                    <Tag />
                 </Route>
                 <Route path="/campaign/:campaignId/tags">
                     <CampaignTags />
