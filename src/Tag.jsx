@@ -17,10 +17,10 @@ export function Tag() {
         <Typography variant="h1">{tagId}</Typography>
         {articles?.map(article =>
             <Chip
-                key={article}
-                label={article} /* TODO this needs to be the article title. */
+                key={article.id}
+                label={article.title} /* TODO this needs to be the article title. */
                 component="a"
-                href={`/campaign/${campaignId}/article/${article}`}
+                href={`/campaign/${campaignId}/article/${article.id}`}
                 clickable
             />
         )}

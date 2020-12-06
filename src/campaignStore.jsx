@@ -149,13 +149,13 @@ const inMemActions = {
     fetchArticlesByTag: (campaignId, tag) => {
         switch (campaignId) {
             case "0a": switch (tag) {
-                case "test": return ["a1", "a3"];
-                case "squop": return ["a2"];
+                case "test": return [{ id: "a1", title: "First Article" }, { id: "a3", title: "Third Article" }];
+                case "squop": return [{ id: "a2", title: "Second Article" }];
                 default: return null;
             }
             case "1b": switch (tag) {
-                case "test": return ["a1", "a3"];
-                case "squop": return ["a2"];
+                case "test": return [{ id: "a1", title: "1b First Article" }, { id: "a3", title: "1b Third Article" }];
+                case "squop": return [{ id: "a2", title: "1b Second Article" }];
                 default: return null;
             }
             default: return null;
