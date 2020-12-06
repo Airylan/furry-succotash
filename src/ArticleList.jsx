@@ -1,4 +1,4 @@
-﻿import { Typography, List } from "@material-ui/core";
+﻿import { Typography, List, Paper } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useCampaign } from "./campaignStore";
@@ -15,15 +15,20 @@ export const ArticleList = (props) => {
         switchCampaign(campaignId);
     }, [campaignId]);
 
-    return (<>
-        {props.noHeader ? null : <Typography variant="h1">Articles</Typography>}
-        <List>
-            {campaign.articles.map((article) => {
-                return (<ListItemLink
-                    to={`/campaign/${campaign.id}/article/${article.id}`}
-                    primary={article.title}
-                />);
-            })}
-        </List>
-    </>);
+    const ArticleList = () => <List>
+        {campaign.articles.map((article) => {
+            return (<ListItemLink
+                to={`/campaign/${campaign.id}/article/${article.id}`}
+                primary={article.title}
+            />);
+        })}
+    </List>;
+    return (<>{
+        props.noHeader
+            ? <ArticleList />
+            : <Paper elevation="2">
+                <Typography variant="h1">Articles</Typography>
+                <ArticleList />
+            </Paper>
+    }</>);
 }

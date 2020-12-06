@@ -1,6 +1,6 @@
 ﻿import React, { useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import { Divider, Typography, Paper } from '@material-ui/core';
+import { Divider, Typography, Paper, Chip } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { useCampaign } from './campaignStore';
 import { Markdown } from './Markdown';
@@ -31,10 +31,14 @@ export const Article = (props) => {
             ? <><Markdown>{markTags(article?.playerInfo?.content)}</Markdown><Divider/></>
             : null
         }
-        <TagCloud
-            minSize="8"
-            maxSize="8"
-            tags={article?.tags?.map((tag) => { return { value: tag, count: 1 } })}
-        />
+        {article?.tags?.map((tag) =>
+            <Chip
+                key={tag}
+                label={tag}
+                component="a"
+                href={`/campaign/${campaignId}/tag/${tag}`}
+                clickable
+            />
+        )}
     </Paper>);
 }

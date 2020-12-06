@@ -1,5 +1,5 @@
 ﻿import React, { useEffect } from 'react';
-import { Typography, Paper, Divider, Accordion, AccordionSummary, AccordionDetails, List } from '@material-ui/core';
+import { Typography, Paper, Divider, Accordion, AccordionSummary, AccordionDetails, List, Chip } from '@material-ui/core';
 import { useCampaign } from './campaignStore';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { TagCloud } from 'react-tagcloud';
@@ -35,12 +35,21 @@ export const CampaignDetails = () => {
                 <Typography variant="subtitle1">Tags</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <TagCloud
+                {/*<TagCloud
                     minSize={12}
                     maxSize={35}
                     tags={campaign.tags.map((tag) => { return { value: tag, count: 1 } })}
                     onClick={handleTagClicked}
-                />
+                />*/}
+                {campaign.tags.map(tag =>
+                    <Chip
+                        key={tag}
+                        label={tag}
+                        component="a"
+                        href={`/campaign/${campaignId}/tag/${tag}`}
+                        clickable
+                    />
+                )}
             </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -52,14 +61,6 @@ export const CampaignDetails = () => {
                 <Typography variant="subtitle1">Articles</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                {/*<List>
-                    {campaign.articles.map((article) => {
-                        return (<ListItemLink
-                            to={`/campaign/${campaign.id}/article/${article.id}`}
-                            primary={article.title}
-                        />);
-                    })}
-                </List>*/}
                 <ArticleList noHeader />
             </AccordionDetails>
         </Accordion>

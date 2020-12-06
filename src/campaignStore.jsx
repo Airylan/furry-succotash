@@ -145,7 +145,21 @@ const inMemActions = {
             }
             default: return null;
         }
-        
+    },
+    fetchArticlesByTag: (campaignId, tag) => {
+        switch (campaignId) {
+            case "0a": switch (tag) {
+                case "test": return ["a1", "a3"];
+                case "squop": return ["a2"];
+                default: return null;
+            }
+            case "1b": switch (tag) {
+                case "test": return ["a1", "a3"];
+                case "squop": return ["a2"];
+                default: return null;
+            }
+            default: return null;
+        }
     }
 };
 
@@ -185,6 +199,9 @@ const store = createStore({
         },
         fetchArticle: (articleId) => ({ getState }) => {
             return campaignStorage.fetchArticle(getState().id, articleId);
+        },
+        fetchArticlesByTag: (tagId) => ({ getState }) => {
+            return campaignStorage.fetchArticlesByTag(getState().id, tagId);
         }
     }
 });
