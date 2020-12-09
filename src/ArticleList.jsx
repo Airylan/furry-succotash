@@ -27,7 +27,7 @@ export const ArticleList = (props) => {
     return (<>{
         props.noHeader
             ? <ArticleList />
-            : <Paper elevation="2">
+            : <Paper elevation={2}>
                 <Typography variant="h1">Articles</Typography>
                 <ArticleList />
             </Paper>

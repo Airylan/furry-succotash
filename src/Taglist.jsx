@@ -16,6 +16,6 @@ export const TagList = (props) => {
         />
     );
     return (<>{props?.noHeader === true
-        ? <>{ tagChips }</>
-        : <Paper elevation="2"><Typography variant="h1">Tags</Typography>{tagChips}</Paper>}</>);
+        ? <>{tagChips}</>
+        : <Paper elevation={2}><Typography variant="h1">Tags</Typography>{tagChips}</Paper>}</>);
 };

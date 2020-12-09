@@ -39,6 +39,17 @@ const options = {
   },
 };
 
+const markTags = (toLink, tags, text) => {
+    return tags?.reduce(
+        (previous, next) =>
+            previous.replace(new RegExp(`(${next}\\S*)`, 'ig'),
+                `[$1](${toLink?.(next)??next})`),
+        text
+    ) ?? text;
+};
+
 export const Markdown = (props) => {
-  return <ReactMarkdown options={options} {...props} />;
+    const { children, tags, toLink, ...otherProps } = props;
+
+    return <ReactMarkdown options={options} {...otherProps}>{markTags(toLink, tags, children) }</ReactMarkdown>;
 }
