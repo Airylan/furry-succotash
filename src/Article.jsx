@@ -1,10 +1,8 @@
 ﻿import React, { useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { Divider, Typography, Paper, Chip } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 import { useCampaign } from './campaignStore';
 import { Markdown } from './Markdown';
-import { TagCloud } from 'react-tagcloud';
 
 export const Article = (props) => {
     const { campaignId, articleId } = useParams();
@@ -16,7 +14,9 @@ export const Article = (props) => {
 
     const markTags = (md) => {
         return campaign.tags.reduce(
-            (previous, next) => previous.replace(new RegExp(`(${next}\\S*)`, 'ig'), `[$1](/campaign/${campaign.id}/tag/${next})`),
+            (previous, next) =>
+                previous.replace(new RegExp(`(${next}\\S*)`, 'ig'),
+                    `[$1](/campaign/${campaign.id}/tag/${next})`),
             md
         );
     };
