@@ -13,7 +13,7 @@ export function Tag() {
 
     const articles = fetchArticlesByTag(tagId);
 
-    return (<Paper elevation="2">
+    return (<Paper elevation={2}>
         <Typography variant="h1">{tagId}</Typography>
         {articles?.map(article =>
             <Chip

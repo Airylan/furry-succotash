@@ -32,8 +32,8 @@ export const TitleBar = (props) => {
                 >
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h6" noWrap inline>
-                    {campaign.title} {/* TODO: title here related to location */}
+                <Typography variant="h6" noWrap display="inline">
+                    {campaign.title} {/* TODO: title here related to location (i.e. tag, article, etc) */}
                 </Typography>
                 <Typography variant="subtitle1">
                     {location.pathname}

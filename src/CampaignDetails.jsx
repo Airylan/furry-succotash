@@ -14,7 +14,7 @@ export const CampaignDetails = () => {
         switchCampaign(campaignId);
     }, [campaignId]);
 
-    return (<Paper elevation="2">
+    return (<Paper elevation={2}>
         <Typography variant="h1">{campaign.title}</Typography>
         <Divider />
         <Typography variant="h2">Description:</Typography>
