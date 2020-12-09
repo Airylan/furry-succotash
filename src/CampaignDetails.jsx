@@ -1,11 +1,10 @@
 ﻿import React, { useEffect } from 'react';
-import { Typography, Paper, Divider, Accordion, AccordionSummary, AccordionDetails, List, Chip } from '@material-ui/core';
+import { Typography, Paper, Divider, Accordion, AccordionSummary, AccordionDetails, List } from '@material-ui/core';
 import { useCampaign } from './campaignStore';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { TagCloud } from 'react-tagcloud';
-import { ListItemLink } from './ListItemLink';
 import { useParams } from 'react-router-dom';
 import { ArticleList } from './ArticleList';
+import { TagList } from './Taglist';
 
 export const CampaignDetails = () => {
     const { campaignId } = useParams();
@@ -14,10 +13,6 @@ export const CampaignDetails = () => {
     useEffect(() => {
         switchCampaign(campaignId);
     }, [campaignId]);
-
-    const handleTagClicked = (tag) => {
-        // Do nothing for now. Routing to articles later.
-    };
 
     return (<Paper elevation="2">
         <Typography variant="h1">{campaign.title}</Typography>
@@ -35,21 +30,7 @@ export const CampaignDetails = () => {
                 <Typography variant="subtitle1">Tags</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                {/*<TagCloud
-                    minSize={12}
-                    maxSize={35}
-                    tags={campaign.tags.map((tag) => { return { value: tag, count: 1 } })}
-                    onClick={handleTagClicked}
-                />*/}
-                {campaign.tags.map(tag =>
-                    <Chip
-                        key={tag}
-                        label={tag}
-                        component="a"
-                        href={`/campaign/${campaignId}/tag/${tag}`}
-                        clickable
-                    />
-                )}
+                <TagList noHeader />
             </AccordionDetails>
         </Accordion>
         <Accordion>

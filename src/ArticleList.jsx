@@ -20,6 +20,7 @@ export const ArticleList = (props) => {
             return (<ListItemLink
                 to={`/campaign/${campaign.id}/article/${article.id}`}
                 primary={article.title}
+                key={article.title}
             />);
         })}
     </List>;
