@@ -8,14 +8,17 @@ import { TagCloud } from 'react-tagcloud';
 
 export const Article = (props) => {
     const { campaignId, articleId } = useParams();
-    const [, { fetchArticle, switchCampaign }] = useCampaign();
+    const [campaign, { fetchArticle, switchCampaign }] = useCampaign();
 
     useEffect(() => {
         switchCampaign(campaignId);
     }, [campaignId]);
 
     const markTags = (md) => {
-        return md;
+        return campaign.tags.reduce(
+            (previous, next) => previous.replace(new RegExp(`(${next}\\S*)`, 'ig'), `[$1](/campaign/${campaign.id}/tag/${next})`),
+            md
+        );
     };
 
     const article = fetchArticle(articleId);
