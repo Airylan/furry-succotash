@@ -2,19 +2,15 @@
 import { useParams } from "react-router-dom";
 import { Divider, Typography, Paper, Chip } from '@material-ui/core';
 import { useCampaign } from './campaignStore';
+import { useArticle } from './articleStore';
 import { Markdown } from './Markdown';
 
 export const Article = (props) => {
     const { campaignId, articleId } = useParams();
-    const [campaign, { fetchArticle, switchCampaign }] = useCampaign();
-
-    useEffect(() => {
-        switchCampaign(campaignId);
-    }, [campaignId]);
+    const [campaign] = useCampaign(campaignId);
+    const [article, articleActions] = useArticle({ campaignId, articleId });
 
     const toLink = (tag) => `/campaign/${campaign.id}/tag/${tag}`;
-
-    const article = fetchArticle(articleId);
 
     return (<Paper elevation={2}>
         <Typography variant="h1" display="inline">{article?.title}</Typography>

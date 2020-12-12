@@ -5,11 +5,7 @@ import { useCampaign } from "./campaignStore";
 
 export function Tag() {
     const { campaignId, tagId } = useParams();
-    const [, { switchCampaign, fetchArticlesByTag }] = useCampaign();
-
-    useEffect(() => {
-        switchCampaign(campaignId);
-    }, [campaignId]);
+    const [, { fetchArticlesByTag }] = useCampaign(campaignId);
 
     const articles = fetchArticlesByTag(tagId);
 

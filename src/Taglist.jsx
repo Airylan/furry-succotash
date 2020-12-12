@@ -5,7 +5,7 @@ import { useCampaign } from './campaignStore';
 
 export const TagList = (props) => {
     const { campaignId } = useParams();
-    const [campaign, { }] = useCampaign();
+    const [campaign, { }] = useCampaign(campaignId);
     const tagChips = campaign.tags.map(tag =>
         <Chip
             key={tag}

@@ -1,7 +1,8 @@
 import { createStore, createHook } from 'react-sweet-state';
+import { useArticles } from './articleStore';
 
 const inMemActions = {
-    listCampaigns: () => ["0a", "1b"],
+    listCampaigns: () => [{ id: "0a", title: "Demo Campaign" }, { id: "1b", title: "Demo Campaign 2" }],
     fetchCampaign: (id) => {
         switch (id) {
             case "0a":
@@ -171,23 +172,47 @@ const campaignStorage = inMemActions;
 
 const store = createStore({
     initialState: {
-        id: "0a",
-        title: "Demo Campaign",
-        description: "Default values to fill in so that we can use the front-end alone",
-        gm: {
-            name: "Airylan Canth",
-            id: "0a"
-        },
-        players: ["1a", "2b", "1c"],
-        tags: [
-            "test",
-            "squop",
-            "zoom"
-        ],
-        articles: [
-            { id: "a1", title: "First Article" },
-            { id: "a2", title: "Second Article" },
-            { id: "a3", title: "Third Article" }
+        campaigns: [
+            {
+                id: "0a",
+                title: "Demo Campaign",
+                description: "Default values to fill in so that we can use the front-end alone",
+                gm: {
+                    name: "Airylan Canth",
+                    id: "0a"
+                },
+                players: ["1a", "2b", "1c"],
+                tags: [
+                    "test",
+                    "squop",
+                    "zoom"
+                ],
+                articles: [
+                    { id: "a1", title: "First Article" },
+                    { id: "a2", title: "Second Article" },
+                    { id: "a3", title: "Third Article" }
+                ]
+            },
+            {
+                id: "1b",
+                title: "Demo Campaign 2",
+                description: "Default values to fill in so that we can use the front-end alone",
+                gm: {
+                    name: "Airylan Canth",
+                    id: "0a"
+                },
+                players: ["1a", "1c", "3f"],
+                tags: [
+                    "test",
+                    "squop",
+                    "zoom"
+                ],
+                articles: [
+                    { id: "a1", title: "First Article" },
+                    { id: "a2", title: "Second Article" },
+                    { id: "a3", title: "Third Article" }
+                ]
+            }
         ]
     },
     actions: {
@@ -206,5 +231,7 @@ const store = createStore({
     }
 });
 
-export const useCampaign = createHook(store);
-export const listCampaigns = campaignStorage.listCampaigns;
+const campaignSelector = (state, id) => state.campaigns.find(x => x.id === id);
+
+export const useCampaign = createHook(store, { selector: campaignSelector });
+export const useCampaigns = createHook(store);

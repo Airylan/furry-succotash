@@ -44,6 +44,9 @@
     </Content>
     <Content Include="src\Article.jsx" />
     <Content Include="src\ArticleList.jsx" />
+    <Content Include="src\articleStore.jsx">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\campaignStore.jsx">
       <SubType>Code</SubType>
     </Content>

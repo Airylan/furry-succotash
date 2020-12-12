@@ -8,11 +8,7 @@ import { TagList } from './Taglist';
 
 export const CampaignDetails = () => {
     const { campaignId } = useParams();
-    const [campaign, { switchCampaign }] = useCampaign();
-
-    useEffect(() => {
-        switchCampaign(campaignId);
-    }, [campaignId]);
+    const [campaign] = useCampaign(campaignId);
 
     return (<Paper elevation={2}>
         <Typography variant="h1">{campaign.title}</Typography>

@@ -11,8 +11,8 @@ import { useCampaign } from './campaignStore';
 export const NavBar = (props) => {
     const classes = useStyles();
     const theme = useTheme();
-    const { drawerIsOpen, setDrawerIsOpen, ...rest } = props;
-    const [campaign] = useCampaign();
+    const { drawerIsOpen, setDrawerIsOpen, campaignId, ...rest } = props;
+    const [campaign] = useCampaign(campaignId);
 
     const handleDrawerClose = () => {
         setDrawerIsOpen(false);
@@ -34,10 +34,17 @@ export const NavBar = (props) => {
         </div>
         <Divider />
         <List>
-            <ListItemLink to={`/campaign/${campaign.id}`} primary="Campaign Details" />
-            <ListItemLink to={`/campaign/${campaign.id}/tags`} primary="Tag Cloud" />
-            <ListItemLink to={`/campaign/${campaign.id}/articles`} primary="Article List" />
+            <ListItemLink to={`/campaigns`} primary="Campaign List" />
             <Divider />
+            {campaign
+            ?<>
+                <ListItemLink to={`/campaign/${campaign.id}`} primary="Campaign Details" />
+                <ListItemLink to={`/campaign/${campaign.id}/tags`} primary="Tag Cloud" />
+                <ListItemLink to={`/campaign/${campaign.id}/articles`} primary="Article List" />
+                <Divider />
+                <ListItemLink to={`/campaign/${campaign.id}/article/create`} primary="Create Article" />
+            </>
+            : null}
         </List>
     </Drawer>);
 }

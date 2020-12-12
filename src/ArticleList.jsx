@@ -7,13 +7,7 @@ import { ListItemLink } from "./ListItemLink";
 
 export const ArticleList = (props) => {
     const { campaignId } = useParams();
-    const [campaign, { switchCampaign }] = useCampaign();
-
-
-    useEffect(() => {
-        // Ensure that the correct campaign is set
-        switchCampaign(campaignId);
-    }, [campaignId]);
+    const [campaign] = useCampaign(campaignId);
 
     const ArticleList = () => <List>
         {campaign.articles.map((article) => {

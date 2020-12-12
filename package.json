@@ -11,6 +11,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "aws-amplify": "^3.3.10",
+    "babel-polyfill": "^6.26.0",
     "clsx": "^1.1.1",
     "crypto-js": "^4.0.0",
     "markdown-to-jsx": "^7.1.0",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.8",
+    "@babel/plugin-transform-regenerator": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "babel-loader": "^8.2.1",

@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import clsx from 'clsx';
 import { useTheme } from '@material-ui/core/styles';
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useStyles } from './styles';
@@ -12,7 +12,8 @@ export const TitleBar = (props) => {
     const theme = useTheme();
     const { drawerIsOpen, setDrawerIsOpen, ...rest } = props;
     const location = useLocation();
-    const [campaign] = useCampaign();
+    const { campaignId } = useParams();
+    const [campaign] = useCampaign(campaignId);
 
     const handleDrawerOpen = () => {
         setDrawerIsOpen(true);
@@ -33,7 +34,7 @@ export const TitleBar = (props) => {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" noWrap display="inline">
-                    {campaign.title} {/* TODO: title here related to location (i.e. tag, article, etc) */}
+                    {campaign?.title} {/* TODO: title here related to location (i.e. tag, article, etc) */}
                 </Typography>
                 <Typography variant="subtitle1">
                     {location.pathname}
