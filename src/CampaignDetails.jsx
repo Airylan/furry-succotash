@@ -15,12 +15,12 @@ export const CampaignDetails = () => {
     }, [campaignId]);
 
     return (<Paper elevation={2}>
-        <Typography variant="h1">{campaign.title}</Typography>
+        <Typography variant="h1">{campaign?.title}</Typography>
         <Divider />
         <Typography variant="h2">Description:</Typography>
-        <Typography>{campaign.description}</Typography>
+        <Typography>{campaign?.description}</Typography>
         <Divider />
-        <Typography variant="h3" display="inline">Campaign owned by: </Typography><Typography variant="subtitle1" display="inline">{campaign.gm.name}</Typography>
+        <Typography variant="h3" display="inline">Campaign owned by: </Typography><Typography variant="subtitle1" display="inline">{campaign?.gm?.name}</Typography>
         <Accordion>
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}

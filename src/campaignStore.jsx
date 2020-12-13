@@ -240,18 +240,21 @@ const store = createStore({
             setState({ campaigns: models, loading: false });
         },
         loadCampaign: (campaignId) => async ({ getState, setState }) => {
-            if (getState().laoding === true) {
+            if (getState().loading === true) {
                 return;
             }
 
             setState({ loading: true });
-            const models = await Datastore.query(Campaign); // TODO: filter to just the one campaign.
-            setState({ campaigns: models, loading: false });
+            const model = await DataStore.query(Campaign, campaignId);
+            setState({ campaigns: [model], loading: false });
         }
     }
 });
 
-const campaignSelector = (state, id) => state.campaigns.find(x => x.id === id);
+const campaignSelector = (state, id) => {
+    const rc = state.campaigns.find(x => x.id === id);
+    return rc;
+}
 
 export const useCampaign = createHook(store, { selector: campaignSelector });
 export const useCampaigns = createHook(store);
