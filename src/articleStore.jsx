@@ -1,6 +1,6 @@
 import { createStore, createHook } from 'react-sweet-state';
-
-const backendActions = {};
+import { DataStore } from '@aws-amplify/datastore';
+import { Article } from './models';
 
 const articleStore = createStore({
     initialState: {
@@ -54,6 +54,14 @@ const articleStore = createStore({
         setArticle: (article) => ({ getState, setState }) => {
             setState({ articles: getState().articles.map(x => x.id === article.id ? article : x) });
             backendActions.saveArticle(article);
+        },
+        loadArticles: () => async ({ getState, setState }) => {
+            if (getState().loadingArticles === true) return;
+
+            setState({ loadingArticles: true });
+            const models = await DataStore.query(Article);
+            console.log(models);
+            setState({ articles: models, loadingArticles: false });
         }
     }
 });
@@ -65,7 +73,7 @@ const awsSelectors = {
     // selectArticle: (state, articleId) => to find out later.
 }
 
-const selectors = inMemorySelectors;
+const selectors = awsSelectors;
 
 export const useArticles = createHook(articleStore);
 export const useArticle = createHook(articleStore, { selector: selectors.selectArticle });

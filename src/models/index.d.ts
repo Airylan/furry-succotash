@@ -3,34 +3,37 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 export declare class GMInfo {
-  readonly NewField?: string;
   readonly content?: string;
   constructor(init: ModelInit<GMInfo>);
 }
 
 export declare class PlayerInfo {
-  readonly NewField?: string;
   readonly content?: string;
   readonly revealed?: boolean;
   constructor(init: ModelInit<PlayerInfo>);
 }
 
-export declare class ArticleDetails {
+export declare class CreatedDates {
+  readonly ooc?: string;
+  readonly ic?: string;
+  constructor(init: ModelInit<CreatedDates>);
+}
+
+export declare class Tag {
   readonly id: string;
-  readonly content?: string;
-  readonly oocCreatedDate?: string;
-  readonly icCreatedDate?: string;
-  readonly gmInfo?: GMInfo;
-  readonly playerInfo?: PlayerInfo;
-  constructor(init: ModelInit<ArticleDetails>);
-  static copyOf(source: ArticleDetails, mutator: (draft: MutableModel<ArticleDetails>) => MutableModel<ArticleDetails> | void): ArticleDetails;
+  readonly label: string;
+  constructor(init: ModelInit<Tag>);
+  static copyOf(source: Tag, mutator: (draft: MutableModel<Tag>) => MutableModel<Tag> | void): Tag;
 }
 
 export declare class Article {
   readonly id: string;
   readonly title: string;
-  readonly tags?: (string | null)[];
-  readonly ArticleDetails?: ArticleDetails;
+  readonly content?: string;
+  readonly createdDate?: CreatedDates;
+  readonly gmInfo?: GMInfo;
+  readonly playerInfo?: PlayerInfo;
+  readonly campaign?: Campaign;
   constructor(init: ModelInit<Article>);
   static copyOf(source: Article, mutator: (draft: MutableModel<Article>) => MutableModel<Article> | void): Article;
 }
@@ -40,7 +43,7 @@ export declare class Campaign {
   readonly title: string;
   readonly description?: string;
   readonly gm: string;
-  readonly tags?: (string | null)[];
+  readonly articles?: (Article | null)[];
   constructor(init: ModelInit<Campaign>);
   static copyOf(source: Campaign, mutator: (draft: MutableModel<Campaign>) => MutableModel<Campaign> | void): Campaign;
 }

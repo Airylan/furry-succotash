@@ -1,22 +1,11 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateArticleDetails = /* GraphQL */ `
-  subscription OnCreateArticleDetails {
-    onCreateArticleDetails {
+export const onCreateTag = /* GraphQL */ `
+  subscription OnCreateTag {
+    onCreateTag {
       id
-      content
-      oocCreatedDate
-      icCreatedDate
-      gmInfo {
-        NewField
-        content
-      }
-      playerInfo {
-        NewField
-        content
-        revealed
-      }
+      label
       _version
       _deleted
       _lastChangedAt
@@ -25,22 +14,11 @@ export const onCreateArticleDetails = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateArticleDetails = /* GraphQL */ `
-  subscription OnUpdateArticleDetails {
-    onUpdateArticleDetails {
+export const onUpdateTag = /* GraphQL */ `
+  subscription OnUpdateTag {
+    onUpdateTag {
       id
-      content
-      oocCreatedDate
-      icCreatedDate
-      gmInfo {
-        NewField
-        content
-      }
-      playerInfo {
-        NewField
-        content
-        revealed
-      }
+      label
       _version
       _deleted
       _lastChangedAt
@@ -49,22 +27,11 @@ export const onUpdateArticleDetails = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteArticleDetails = /* GraphQL */ `
-  subscription OnDeleteArticleDetails {
-    onDeleteArticleDetails {
+export const onDeleteTag = /* GraphQL */ `
+  subscription OnDeleteTag {
+    onDeleteTag {
       id
-      content
-      oocCreatedDate
-      icCreatedDate
-      gmInfo {
-        NewField
-        content
-      }
-      playerInfo {
-        NewField
-        content
-        revealed
-      }
+      label
       _version
       _deleted
       _lastChangedAt
@@ -78,17 +45,29 @@ export const onCreateArticle = /* GraphQL */ `
     onCreateArticle {
       id
       title
-      tags
+      content
+      createdDate {
+        ooc
+        ic
+      }
+      gmInfo {
+        content
+      }
+      playerInfo {
+        content
+        revealed
+      }
+      campaignId
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      ArticleDetails {
+      campaign {
         id
-        content
-        oocCreatedDate
-        icCreatedDate
+        title
+        description
+        gm
         _version
         _deleted
         _lastChangedAt
@@ -103,17 +82,29 @@ export const onUpdateArticle = /* GraphQL */ `
     onUpdateArticle {
       id
       title
-      tags
+      content
+      createdDate {
+        ooc
+        ic
+      }
+      gmInfo {
+        content
+      }
+      playerInfo {
+        content
+        revealed
+      }
+      campaignId
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      ArticleDetails {
+      campaign {
         id
-        content
-        oocCreatedDate
-        icCreatedDate
+        title
+        description
+        gm
         _version
         _deleted
         _lastChangedAt
@@ -128,17 +119,29 @@ export const onDeleteArticle = /* GraphQL */ `
     onDeleteArticle {
       id
       title
-      tags
+      content
+      createdDate {
+        ooc
+        ic
+      }
+      gmInfo {
+        content
+      }
+      playerInfo {
+        content
+        revealed
+      }
+      campaignId
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      ArticleDetails {
+      campaign {
         id
-        content
-        oocCreatedDate
-        icCreatedDate
+        title
+        description
+        gm
         _version
         _deleted
         _lastChangedAt
@@ -155,12 +158,15 @@ export const onCreateCampaign = /* GraphQL */ `
       title
       description
       gm
-      tags
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
+      articles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -171,12 +177,15 @@ export const onUpdateCampaign = /* GraphQL */ `
       title
       description
       gm
-      tags
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
+      articles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -187,12 +196,15 @@ export const onDeleteCampaign = /* GraphQL */ `
       title
       description
       gm
-      tags
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
+      articles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;

@@ -1,28 +1,32 @@
+
 type GMInfo {
-  NewField: String
   content: String
 }
 
 type PlayerInfo {
-  NewField: String
   content: String
   revealed: Boolean
 }
 
-type ArticleDetails @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  content: String
-  oocCreatedDate: AWSDate
-  icCreatedDate: AWSDate
-  gmInfo: GMInfo
-  playerInfo: PlayerInfo
+type CreatedDates {
+  ooc: AWSDate
+  ic: AWSDate
 }
 
-type Article @model @auth(rules: [{allow: public}]) {
+type Tag @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  label: String!
+}
+
+type Article @model @auth(rules: [{allow: public}]) @key(name: "byCampaign", fields: ["campaignId", "title"]) {
   id: ID!
   title: String!
-  tags: [String]
-  ArticleDetails: ArticleDetails @connection
+  content: String
+  createdDate: CreatedDates
+  gmInfo: GMInfo
+  playerInfo: PlayerInfo
+  campaignId: ID!
+  campaign: Campaign @connection(fields: ["campaignId"])
 }
 
 type Campaign @model @auth(rules: [{allow: public}]) {
@@ -30,5 +34,5 @@ type Campaign @model @auth(rules: [{allow: public}]) {
   title: String!
   description: String
   gm: AWSEmail!
-  tags: [String]
+  articles: [Article] @connection(keyName: "byCampaign", fields: ["id"])
 }

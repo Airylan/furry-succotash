@@ -1,5 +1,7 @@
 import { createStore, createHook } from 'react-sweet-state';
-import { useArticles } from './articleStore';
+
+import { DataStore } from '@aws-amplify/datastore';
+import { Campaign } from './models';
 
 const inMemActions = {
     listCampaigns: () => [{ id: "0a", title: "Demo Campaign" }, { id: "1b", title: "Demo Campaign 2" }],
@@ -227,6 +229,24 @@ const store = createStore({
         },
         fetchArticlesByTag: (tagId) => ({ getState }) => {
             return campaignStorage.fetchArticlesByTag(getState().id, tagId);
+        },
+        loadCampaigns: () => async ({ getState, setState }) => {
+            if (getState().loading === true) {
+                return;
+            }
+
+            setState({ loading: true });
+            const models = await DataStore.query(Campaign);
+            setState({ campaigns: models, loading: false });
+        },
+        loadCampaign: (campaignId) => async ({ getState, setState }) => {
+            if (getState().laoding === true) {
+                return;
+            }
+
+            setState({ loading: true });
+            const models = await Datastore.query(Campaign); // TODO: filter to just the one campaign.
+            setState({ campaigns: models, loading: false });
         }
     }
 });

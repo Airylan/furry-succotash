@@ -18,6 +18,10 @@ import { ArticleList } from './ArticleList';
 import { Tag } from './Tag';
 import { TagList } from './Taglist';
 
+import Amplify from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
+
 const NoRoute = () => {
     return (<Typography paragraph>Content not found.</Typography>);
 };
@@ -28,7 +32,9 @@ const NotImplemented = () => {
 const EditArticle = NotImplemented;
 
 const CampaignList = () => {
-    const [campaignStore] = useCampaigns();
+    const [campaignStore, { loadCampaigns }] = useCampaigns();
+
+    useEffect(() => { loadCampaigns() }, []);
 
     return (<Paper elevation={2}>
         <Typography variant="h2">Campaigns</Typography>

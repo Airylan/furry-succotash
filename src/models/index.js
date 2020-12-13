@@ -4,12 +4,13 @@ import { schema } from './schema';
 
 
 
-const { ArticleDetails, Article, Campaign, GMInfo, PlayerInfo } = initSchema(schema);
+const { Tag, Article, Campaign, GMInfo, PlayerInfo, CreatedDates } = initSchema(schema);
 
 export {
-  ArticleDetails,
+  Tag,
   Article,
   Campaign,
   GMInfo,
-  PlayerInfo
+  PlayerInfo,
+  CreatedDates
 };

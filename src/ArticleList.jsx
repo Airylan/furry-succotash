@@ -3,18 +3,23 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useCampaign } from "./campaignStore";
 import { ListItemLink } from "./ListItemLink";
+import { useArticles } from './articleStore';
 
 
 export const ArticleList = (props) => {
     const { campaignId } = useParams();
-    const [campaign] = useCampaign(campaignId);
+    const [articleStore, { loadArticles }] = useArticles();
+
+    useEffect(async () => {
+        await loadArticles(campaignId);
+    }, [campaignId]);
 
     const ArticleList = () => <List>
-        {campaign.articles.map((article) => {
+        {articleStore?.articles?.map((article) => {
             return (<ListItemLink
-                to={`/campaign/${campaign.id}/article/${article.id}`}
+                to={`/campaign/${campaignId}/article/${article.id}`}
                 primary={article.title}
-                key={article.title}
+                key={article.id}
             />);
         })}
     </List>;

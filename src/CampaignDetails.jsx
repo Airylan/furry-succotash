@@ -8,7 +8,11 @@ import { TagList } from './Taglist';
 
 export const CampaignDetails = () => {
     const { campaignId } = useParams();
-    const [campaign] = useCampaign(campaignId);
+    const [campaign, { loadCampaign }] = useCampaign(campaignId);
+
+    useEffect(async () => {
+        await loadCampaign(campaignId);
+    }, [campaignId]);
 
     return (<Paper elevation={2}>
         <Typography variant="h1">{campaign.title}</Typography>

@@ -1,18 +1,29 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const listArticleDetailss = /* GraphQL */ `
-  query ListArticleDetailss(
-    $filter: ModelArticleDetailsFilterInput
+export const getTag = /* GraphQL */ `
+  query GetTag($id: ID!) {
+    getTag(id: $id) {
+      id
+      label
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listTags = /* GraphQL */ `
+  query ListTags(
+    $filter: ModelTagFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listArticleDetailss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        content
-        oocCreatedDate
-        icCreatedDate
+        label
         _version
         _deleted
         _lastChangedAt
@@ -24,38 +35,14 @@ export const listArticleDetailss = /* GraphQL */ `
     }
   }
 `;
-export const getArticleDetails = /* GraphQL */ `
-  query GetArticleDetails($id: ID!) {
-    getArticleDetails(id: $id) {
-      id
-      content
-      oocCreatedDate
-      icCreatedDate
-      gmInfo {
-        NewField
-        content
-      }
-      playerInfo {
-        NewField
-        content
-        revealed
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const syncArticleDetails = /* GraphQL */ `
-  query SyncArticleDetails(
-    $filter: ModelArticleDetailsFilterInput
+export const syncTags = /* GraphQL */ `
+  query SyncTags(
+    $filter: ModelTagFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncArticleDetails(
+    syncTags(
       filter: $filter
       limit: $limit
       nextToken: $nextToken
@@ -63,9 +50,7 @@ export const syncArticleDetails = /* GraphQL */ `
     ) {
       items {
         id
-        content
-        oocCreatedDate
-        icCreatedDate
+        label
         _version
         _deleted
         _lastChangedAt
@@ -82,17 +67,29 @@ export const getArticle = /* GraphQL */ `
     getArticle(id: $id) {
       id
       title
-      tags
+      content
+      createdDate {
+        ooc
+        ic
+      }
+      gmInfo {
+        content
+      }
+      playerInfo {
+        content
+        revealed
+      }
+      campaignId
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      ArticleDetails {
+      campaign {
         id
-        content
-        oocCreatedDate
-        icCreatedDate
+        title
+        description
+        gm
         _version
         _deleted
         _lastChangedAt
@@ -112,7 +109,8 @@ export const listArticles = /* GraphQL */ `
       items {
         id
         title
-        tags
+        content
+        campaignId
         _version
         _deleted
         _lastChangedAt
@@ -140,7 +138,31 @@ export const syncArticles = /* GraphQL */ `
       items {
         id
         title
-        tags
+        content
+        campaignId
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const listCampaigns = /* GraphQL */ `
+  query ListCampaigns(
+    $filter: ModelCampaignFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCampaigns(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        title
+        description
+        gm
         _version
         _deleted
         _lastChangedAt
@@ -159,36 +181,15 @@ export const getCampaign = /* GraphQL */ `
       title
       description
       gm
-      tags
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-    }
-  }
-`;
-export const listCampaigns = /* GraphQL */ `
-  query ListCampaigns(
-    $filter: ModelCampaignFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listCampaigns(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        title
-        description
-        gm
-        tags
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
+      articles {
+        nextToken
+        startedAt
       }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -210,7 +211,6 @@ export const syncCampaigns = /* GraphQL */ `
         title
         description
         gm
-        tags
         _version
         _deleted
         _lastChangedAt

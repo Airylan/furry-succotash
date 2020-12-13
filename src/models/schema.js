@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "ArticleDetails": {
-            "name": "ArticleDetails",
+        "Tag": {
+            "name": "Tag",
             "fields": {
                 "id": {
                     "name": "id",
@@ -10,48 +10,16 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "content": {
-                    "name": "content",
+                "label": {
+                    "name": "label",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "oocCreatedDate": {
-                    "name": "oocCreatedDate",
-                    "isArray": false,
-                    "type": "AWSDate",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "icCreatedDate": {
-                    "name": "icCreatedDate",
-                    "isArray": false,
-                    "type": "AWSDate",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "gmInfo": {
-                    "name": "gmInfo",
-                    "isArray": false,
-                    "type": {
-                        "nonModel": "GMInfo"
-                    },
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "playerInfo": {
-                    "name": "playerInfo",
-                    "isArray": false,
-                    "type": {
-                        "nonModel": "PlayerInfo"
-                    },
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 }
             },
             "syncable": true,
-            "pluralName": "ArticleDetails",
+            "pluralName": "Tags",
             "attributes": [
                 {
                     "type": "model",
@@ -92,25 +60,51 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "tags": {
-                    "name": "tags",
-                    "isArray": true,
+                "content": {
+                    "name": "content",
+                    "isArray": false,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
+                    "attributes": []
                 },
-                "ArticleDetails": {
-                    "name": "ArticleDetails",
+                "createdDate": {
+                    "name": "createdDate",
                     "isArray": false,
                     "type": {
-                        "model": "ArticleDetails"
+                        "nonModel": "CreatedDates"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "gmInfo": {
+                    "name": "gmInfo",
+                    "isArray": false,
+                    "type": {
+                        "nonModel": "GMInfo"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "playerInfo": {
+                    "name": "playerInfo",
+                    "isArray": false,
+                    "type": {
+                        "nonModel": "PlayerInfo"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "campaign": {
+                    "name": "campaign",
+                    "isArray": false,
+                    "type": {
+                        "model": "Campaign"
                     },
                     "isRequired": false,
                     "attributes": [],
                     "association": {
                         "connectionType": "BELONGS_TO",
-                        "targetName": "articleArticleDetailsId"
+                        "targetName": "campaignId"
                     }
                 }
             },
@@ -120,6 +114,16 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byCampaign",
+                        "fields": [
+                            "campaignId",
+                            "title"
+                        ]
+                    }
                 },
                 {
                     "type": "auth",
@@ -170,13 +174,19 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "tags": {
-                    "name": "tags",
+                "articles": {
+                    "name": "articles",
                     "isArray": true,
-                    "type": "String",
+                    "type": {
+                        "model": "Article"
+                    },
                     "isRequired": false,
                     "attributes": [],
-                    "isArrayNullable": true
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "campaign"
+                    }
                 }
             },
             "syncable": true,
@@ -210,13 +220,6 @@ export const schema = {
         "GMInfo": {
             "name": "GMInfo",
             "fields": {
-                "NewField": {
-                    "name": "NewField",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "content": {
                     "name": "content",
                     "isArray": false,
@@ -229,13 +232,6 @@ export const schema = {
         "PlayerInfo": {
             "name": "PlayerInfo",
             "fields": {
-                "NewField": {
-                    "name": "NewField",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "content": {
                     "name": "content",
                     "isArray": false,
@@ -251,7 +247,26 @@ export const schema = {
                     "attributes": []
                 }
             }
+        },
+        "CreatedDates": {
+            "name": "CreatedDates",
+            "fields": {
+                "ooc": {
+                    "name": "ooc",
+                    "isArray": false,
+                    "type": "AWSDate",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "ic": {
+                    "name": "ic",
+                    "isArray": false,
+                    "type": "AWSDate",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            }
         }
     },
-    "version": "dc134bfddc8b178d046340b3dae66595"
+    "version": "3287a7c17f9370de9faef5ab02af88b9"
 };

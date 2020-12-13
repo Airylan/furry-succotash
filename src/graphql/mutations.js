@@ -1,25 +1,14 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createArticleDetails = /* GraphQL */ `
-  mutation CreateArticleDetails(
-    $input: CreateArticleDetailsInput!
-    $condition: ModelArticleDetailsConditionInput
+export const createTag = /* GraphQL */ `
+  mutation CreateTag(
+    $input: CreateTagInput!
+    $condition: ModelTagConditionInput
   ) {
-    createArticleDetails(input: $input, condition: $condition) {
+    createTag(input: $input, condition: $condition) {
       id
-      content
-      oocCreatedDate
-      icCreatedDate
-      gmInfo {
-        NewField
-        content
-      }
-      playerInfo {
-        NewField
-        content
-        revealed
-      }
+      label
       _version
       _deleted
       _lastChangedAt
@@ -28,25 +17,14 @@ export const createArticleDetails = /* GraphQL */ `
     }
   }
 `;
-export const updateArticleDetails = /* GraphQL */ `
-  mutation UpdateArticleDetails(
-    $input: UpdateArticleDetailsInput!
-    $condition: ModelArticleDetailsConditionInput
+export const updateTag = /* GraphQL */ `
+  mutation UpdateTag(
+    $input: UpdateTagInput!
+    $condition: ModelTagConditionInput
   ) {
-    updateArticleDetails(input: $input, condition: $condition) {
+    updateTag(input: $input, condition: $condition) {
       id
-      content
-      oocCreatedDate
-      icCreatedDate
-      gmInfo {
-        NewField
-        content
-      }
-      playerInfo {
-        NewField
-        content
-        revealed
-      }
+      label
       _version
       _deleted
       _lastChangedAt
@@ -55,25 +33,14 @@ export const updateArticleDetails = /* GraphQL */ `
     }
   }
 `;
-export const deleteArticleDetails = /* GraphQL */ `
-  mutation DeleteArticleDetails(
-    $input: DeleteArticleDetailsInput!
-    $condition: ModelArticleDetailsConditionInput
+export const deleteTag = /* GraphQL */ `
+  mutation DeleteTag(
+    $input: DeleteTagInput!
+    $condition: ModelTagConditionInput
   ) {
-    deleteArticleDetails(input: $input, condition: $condition) {
+    deleteTag(input: $input, condition: $condition) {
       id
-      content
-      oocCreatedDate
-      icCreatedDate
-      gmInfo {
-        NewField
-        content
-      }
-      playerInfo {
-        NewField
-        content
-        revealed
-      }
+      label
       _version
       _deleted
       _lastChangedAt
@@ -90,17 +57,29 @@ export const createArticle = /* GraphQL */ `
     createArticle(input: $input, condition: $condition) {
       id
       title
-      tags
+      content
+      createdDate {
+        ooc
+        ic
+      }
+      gmInfo {
+        content
+      }
+      playerInfo {
+        content
+        revealed
+      }
+      campaignId
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      ArticleDetails {
+      campaign {
         id
-        content
-        oocCreatedDate
-        icCreatedDate
+        title
+        description
+        gm
         _version
         _deleted
         _lastChangedAt
@@ -118,17 +97,29 @@ export const updateArticle = /* GraphQL */ `
     updateArticle(input: $input, condition: $condition) {
       id
       title
-      tags
+      content
+      createdDate {
+        ooc
+        ic
+      }
+      gmInfo {
+        content
+      }
+      playerInfo {
+        content
+        revealed
+      }
+      campaignId
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      ArticleDetails {
+      campaign {
         id
-        content
-        oocCreatedDate
-        icCreatedDate
+        title
+        description
+        gm
         _version
         _deleted
         _lastChangedAt
@@ -146,17 +137,29 @@ export const deleteArticle = /* GraphQL */ `
     deleteArticle(input: $input, condition: $condition) {
       id
       title
-      tags
+      content
+      createdDate {
+        ooc
+        ic
+      }
+      gmInfo {
+        content
+      }
+      playerInfo {
+        content
+        revealed
+      }
+      campaignId
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      ArticleDetails {
+      campaign {
         id
-        content
-        oocCreatedDate
-        icCreatedDate
+        title
+        description
+        gm
         _version
         _deleted
         _lastChangedAt
@@ -176,12 +179,15 @@ export const createCampaign = /* GraphQL */ `
       title
       description
       gm
-      tags
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
+      articles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -195,12 +201,15 @@ export const updateCampaign = /* GraphQL */ `
       title
       description
       gm
-      tags
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
+      articles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -214,12 +223,15 @@ export const deleteCampaign = /* GraphQL */ `
       title
       description
       gm
-      tags
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
+      articles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;

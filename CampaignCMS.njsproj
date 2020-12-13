@@ -33,6 +33,119 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".babelrc" />
+    <Content Include="amplify\#current-cloud-backend\amplify-meta.json" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\cloudformation-template.json" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\parameters.json" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Article.ArticleDetails.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Article.ArticleDetails.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.createArticle.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.createArticle.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.createArticleDetails.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.createArticleDetails.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.createCampaign.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.createCampaign.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.deleteArticle.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.deleteArticle.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.deleteArticleDetails.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.deleteArticleDetails.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.deleteCampaign.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.deleteCampaign.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.updateArticle.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.updateArticle.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.updateArticleDetails.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.updateArticleDetails.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.updateCampaign.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Mutation.updateCampaign.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.getArticle.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.getArticle.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.getArticleDetails.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.getArticleDetails.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.getCampaign.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.getCampaign.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.listArticleDetailss.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.listArticleDetailss.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.listArticles.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.listArticles.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.listCampaigns.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.listCampaigns.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.syncArticleDetails.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.syncArticleDetails.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.syncArticles.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.syncArticles.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.syncCampaigns.req.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\Query.syncCampaigns.res.vtl" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\schema.graphql" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\stacks\Article.json" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\stacks\ArticleDetails.json" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\stacks\Campaign.json" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\stacks\ConnectionStack.json" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\build\stacks\CustomResources.json" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\parameters.json" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\schema.graphql" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\stacks\CustomResources.json" />
+    <Content Include="amplify\#current-cloud-backend\api\furrysuccotash\transform.conf.json" />
+    <Content Include="amplify\#current-cloud-backend\auth\furrysuccotash\furrysuccotash-cloudformation-template.yml" />
+    <Content Include="amplify\#current-cloud-backend\auth\furrysuccotash\parameters.json" />
+    <Content Include="amplify\#current-cloud-backend\backend-config.json" />
+    <Content Include="amplify\.config\local-aws-info.json" />
+    <Content Include="amplify\.config\local-env-info.json" />
+    <Content Include="amplify\.config\project-config.json" />
+    <Content Include="amplify\backend\amplify-meta.json" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\cloudformation-template.json" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\parameters.json" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Article.ArticleDetails.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Article.ArticleDetails.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.createArticle.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.createArticle.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.createArticleDetails.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.createArticleDetails.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.createCampaign.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.createCampaign.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.deleteArticle.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.deleteArticle.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.deleteArticleDetails.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.deleteArticleDetails.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.deleteCampaign.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.deleteCampaign.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.updateArticle.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.updateArticle.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.updateArticleDetails.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.updateArticleDetails.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.updateCampaign.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Mutation.updateCampaign.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.getArticle.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.getArticle.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.getArticleDetails.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.getArticleDetails.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.getCampaign.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.getCampaign.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.listArticleDetailss.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.listArticleDetailss.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.listArticles.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.listArticles.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.listCampaigns.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.listCampaigns.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.syncArticleDetails.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.syncArticleDetails.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.syncArticles.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.syncArticles.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.syncCampaigns.req.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\resolvers\Query.syncCampaigns.res.vtl" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\schema.graphql" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\stacks\Article.json" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\stacks\ArticleDetails.json" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\stacks\Campaign.json" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\stacks\ConnectionStack.json" />
+    <Content Include="amplify\backend\api\furrysuccotash\build\stacks\CustomResources.json" />
+    <Content Include="amplify\backend\api\furrysuccotash\parameters.json" />
+    <Content Include="amplify\backend\api\furrysuccotash\schema.graphql" />
+    <Content Include="amplify\backend\api\furrysuccotash\stacks\CustomResources.json" />
+    <Content Include="amplify\backend\api\furrysuccotash\transform.conf.json" />
+    <Content Include="amplify\backend\auth\furrysuccotash\furrysuccotash-cloudformation-template.yml" />
+    <Content Include="amplify\backend\auth\furrysuccotash\parameters.json" />
+    <Content Include="amplify\backend\backend-config.json" />
+    <Content Include="amplify\cli.json" />
+    <Content Include="amplify\team-provider-info.json" />
     <Content Include="index.html">
       <SubType>Code</SubType>
     </Content>
@@ -50,9 +163,14 @@
     <Content Include="src\campaignStore.jsx">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\graphql\mutations.js" />
+    <Content Include="src\graphql\queries.js" />
+    <Content Include="src\graphql\subscriptions.js" />
     <Content Include="src\Markdown.jsx">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\models\index.js" />
+    <Content Include="src\models\schema.js" />
     <Content Include="src\NavBar.jsx" />
     <Content Include="src\styles.jsx">
       <SubType>Code</SubType>
@@ -65,7 +183,39 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="amplify\" />
+    <Folder Include="amplify\#current-cloud-backend\" />
+    <Folder Include="amplify\#current-cloud-backend\api\" />
+    <Folder Include="amplify\#current-cloud-backend\api\furrysuccotash\" />
+    <Folder Include="amplify\#current-cloud-backend\api\furrysuccotash\build\" />
+    <Folder Include="amplify\#current-cloud-backend\api\furrysuccotash\build\functions\" />
+    <Folder Include="amplify\#current-cloud-backend\api\furrysuccotash\build\pipelineFunctions\" />
+    <Folder Include="amplify\#current-cloud-backend\api\furrysuccotash\build\resolvers\" />
+    <Folder Include="amplify\#current-cloud-backend\api\furrysuccotash\build\stacks\" />
+    <Folder Include="amplify\#current-cloud-backend\api\furrysuccotash\resolvers\" />
+    <Folder Include="amplify\#current-cloud-backend\api\furrysuccotash\stacks\" />
+    <Folder Include="amplify\#current-cloud-backend\auth\" />
+    <Folder Include="amplify\#current-cloud-backend\auth\furrysuccotash\" />
+    <Folder Include="amplify\.config\" />
+    <Folder Include="amplify\backend\" />
+    <Folder Include="amplify\backend\api\" />
+    <Folder Include="amplify\backend\api\furrysuccotash\" />
+    <Folder Include="amplify\backend\api\furrysuccotash\build\" />
+    <Folder Include="amplify\backend\api\furrysuccotash\build\functions\" />
+    <Folder Include="amplify\backend\api\furrysuccotash\build\pipelineFunctions\" />
+    <Folder Include="amplify\backend\api\furrysuccotash\build\resolvers\" />
+    <Folder Include="amplify\backend\api\furrysuccotash\build\stacks\" />
+    <Folder Include="amplify\backend\api\furrysuccotash\resolvers\" />
+    <Folder Include="amplify\backend\api\furrysuccotash\stacks\" />
+    <Folder Include="amplify\backend\auth\" />
+    <Folder Include="amplify\backend\auth\furrysuccotash\" />
     <Folder Include="src\" />
+    <Folder Include="src\graphql\" />
+    <Folder Include="src\models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\models\index.d.ts" />
+    <TypeScriptCompile Include="src\models\schema.d.ts" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
