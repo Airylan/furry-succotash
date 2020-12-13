@@ -7,20 +7,25 @@ import { Markdown } from './Markdown';
 
 export const Article = (props) => {
     const { campaignId, articleId } = useParams();
-    const [campaign] = useCampaign(campaignId);
-    const [article, articleActions] = useArticle({ campaignId, articleId });
+    const [article, { loadArticle }] = useArticle(articleId);
 
-    const toLink = (tag) => `/campaign/${campaign.id}/tag/${tag}`;
+    const campaignTags = []; // TODO: tag storage.
+
+    useEffect(async () => {
+        loadArticle(articleId);
+    }, [articleId]);
+
+    const toLink = (tag) => `/campaign/${campaignId}/tag/${tag}`;
 
     return (<Paper elevation={2}>
         <Typography variant="h1" display="inline">{article?.title}</Typography>
         <Typography variant="subtitle1" display="inline"> Posted on: {article?.created?.ooc}</Typography>
-        <Markdown tags={campaign.tags} toLink={toLink}>
-            {article?.content}
+        <Markdown tags={campaignTags} toLink={toLink}>
+            {article?.content??""}
         </Markdown>
         <Divider />
         {article?.playerInfo?.revealed
-            ? <><Markdown tags={campaign.tags} toLink={toLink}>{article?.playerInfo?.content}</Markdown><Divider/></>
+            ? <><Markdown tags={campaignTags} toLink={toLink}>{article?.playerInfo?.content??""}</Markdown><Divider/></>
             : null
         }
         {article?.tags?.map((tag) =>

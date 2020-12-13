@@ -53,24 +53,28 @@ const articleStore = createStore({
         setArticles: (articles) => ({ setState }) => setState({ articles: articles }),
         setArticle: (article) => ({ getState, setState }) => {
             setState({ articles: getState().articles.map(x => x.id === article.id ? article : x) });
-            backendActions.saveArticle(article);
         },
         loadArticles: () => async ({ getState, setState }) => {
-            if (getState().loadingArticles === true) return;
+            if (getState().loading === true) return;
 
-            setState({ loadingArticles: true });
+            setState({ loading: true });
             const models = await DataStore.query(Article);
             console.log(models);
-            setState({ articles: models, loadingArticles: false });
+            setState({ articles: models, loading: false });
+        },
+        loadArticle: (articleId) => async ({ getState, setState }) => {
+            if (getState().loading === true) return;
+
+            setState({ loading: true });
+            const model = await DataStore.query(Article, articleId);
+            console.log(model);
+            setState({ articles: [model], loading: false });
         }
     }
 });
 
-const inMemorySelectors = {
-    selectArticle: (state, { campaignId, articleId }) => state.articles.find(x => x.id === articleId)
-};
 const awsSelectors = {
-    // selectArticle: (state, articleId) => to find out later.
+    selectArticle: (state, articleId) => state?.articles?.find(x => x.id === articleId)
 }
 
 const selectors = awsSelectors;
