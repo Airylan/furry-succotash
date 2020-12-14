@@ -14,6 +14,10 @@ export const createTag = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      TagArticles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -30,6 +34,10 @@ export const updateTag = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      TagArticles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -46,6 +54,10 @@ export const deleteTag = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      TagArticles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -85,6 +97,10 @@ export const createArticle = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
+      }
+      tags {
+        nextToken
+        startedAt
       }
     }
   }
@@ -126,6 +142,10 @@ export const updateArticle = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      tags {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -165,6 +185,10 @@ export const deleteArticle = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
+      }
+      tags {
+        nextToken
+        startedAt
       }
     }
   }
@@ -231,6 +255,117 @@ export const deleteCampaign = /* GraphQL */ `
       articles {
         nextToken
         startedAt
+      }
+    }
+  }
+`;
+export const createTagArticle = /* GraphQL */ `
+  mutation CreateTagArticle(
+    $input: CreateTagArticleInput!
+    $condition: ModelTagArticleConditionInput
+  ) {
+    createTagArticle(input: $input, condition: $condition) {
+      id
+      tagID
+      articleID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      tag {
+        id
+        label
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      article {
+        id
+        title
+        content
+        campaignId
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const updateTagArticle = /* GraphQL */ `
+  mutation UpdateTagArticle(
+    $input: UpdateTagArticleInput!
+    $condition: ModelTagArticleConditionInput
+  ) {
+    updateTagArticle(input: $input, condition: $condition) {
+      id
+      tagID
+      articleID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      tag {
+        id
+        label
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      article {
+        id
+        title
+        content
+        campaignId
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const deleteTagArticle = /* GraphQL */ `
+  mutation DeleteTagArticle(
+    $input: DeleteTagArticleInput!
+    $condition: ModelTagArticleConditionInput
+  ) {
+    deleteTagArticle(input: $input, condition: $condition) {
+      id
+      tagID
+      articleID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      tag {
+        id
+        label
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      article {
+        id
+        title
+        content
+        campaignId
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
       }
     }
   }

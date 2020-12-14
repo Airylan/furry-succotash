@@ -1,4 +1,3 @@
-
 type GMInfo {
   content: String
 }
@@ -16,6 +15,7 @@ type CreatedDates {
 type Tag @model @auth(rules: [{allow: public}]) {
   id: ID!
   label: String!
+  TagArticles: [TagArticle] @connection(keyName: "byTag", fields: ["id"])
 }
 
 type Article @model @auth(rules: [{allow: public}]) @key(name: "byCampaign", fields: ["campaignId", "title"]) {
@@ -27,6 +27,7 @@ type Article @model @auth(rules: [{allow: public}]) @key(name: "byCampaign", fie
   playerInfo: PlayerInfo
   campaignId: ID!
   campaign: Campaign @connection(fields: ["campaignId"])
+  tags: [TagArticle] @connection(keyName: "byArticle", fields: ["id"])
 }
 
 type Campaign @model @auth(rules: [{allow: public}]) {
@@ -36,3 +37,12 @@ type Campaign @model @auth(rules: [{allow: public}]) {
   gm: AWSEmail!
   articles: [Article] @connection(keyName: "byCampaign", fields: ["id"])
 }
+
+type TagArticle @model(queries: null) @key(name: "byTag", fields: ["tagID", "articleID"]) @key(name: "byArticle", fields: ["articleID", "tagID"]) @auth(rules: [{allow: public}, {allow: public}]) {
+  id: ID!
+  tagID: ID!
+  articleID: ID!
+  tag: Tag! @connection(fields: ["tagID"])
+  article: Article! @connection(fields: ["articleID"])
+}
+ 

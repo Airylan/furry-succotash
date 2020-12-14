@@ -22,8 +22,17 @@ export declare class CreatedDates {
 export declare class Tag {
   readonly id: string;
   readonly label: string;
+  readonly TagArticles?: (TagArticle | null)[];
   constructor(init: ModelInit<Tag>);
   static copyOf(source: Tag, mutator: (draft: MutableModel<Tag>) => MutableModel<Tag> | void): Tag;
+}
+
+export declare class TagArticle {
+  readonly id: string;
+  readonly tag: Tag;
+  readonly article: Article;
+  constructor(init: ModelInit<TagArticle>);
+  static copyOf(source: TagArticle, mutator: (draft: MutableModel<TagArticle>) => MutableModel<TagArticle> | void): TagArticle;
 }
 
 export declare class Article {
@@ -34,6 +43,7 @@ export declare class Article {
   readonly gmInfo?: GMInfo;
   readonly playerInfo?: PlayerInfo;
   readonly campaign?: Campaign;
+  readonly tags?: (TagArticle | null)[];
   constructor(init: ModelInit<Article>);
   static copyOf(source: Article, mutator: (draft: MutableModel<Article>) => MutableModel<Article> | void): Article;
 }

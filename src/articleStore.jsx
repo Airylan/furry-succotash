@@ -1,6 +1,6 @@
 import { createStore, createHook } from 'react-sweet-state';
 import { DataStore } from '@aws-amplify/datastore';
-import { Article } from './models';
+import { Article, TagArticle } from './models';
 
 const articleStore = createStore({
     initialState: {
@@ -67,8 +67,9 @@ const articleStore = createStore({
 
             setState({ loading: true });
             const model = await DataStore.query(Article, articleId);
+            const tags = await DataStore.query(TagArticle, c => c.article.id === articleId);
             console.log(model);
-            setState({ articles: [model], loading: false });
+            setState({ articles: [{ ...model, tags: tags.map(x => x.tag) }], loading: false });
         }
     }
 });

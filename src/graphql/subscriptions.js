@@ -11,6 +11,10 @@ export const onCreateTag = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      TagArticles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -24,6 +28,10 @@ export const onUpdateTag = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      TagArticles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -37,6 +45,10 @@ export const onDeleteTag = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      TagArticles {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -73,6 +85,10 @@ export const onCreateArticle = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
+      }
+      tags {
+        nextToken
+        startedAt
       }
     }
   }
@@ -111,6 +127,10 @@ export const onUpdateArticle = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      tags {
+        nextToken
+        startedAt
+      }
     }
   }
 `;
@@ -147,6 +167,10 @@ export const onDeleteArticle = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
+      }
+      tags {
+        nextToken
+        startedAt
       }
     }
   }
@@ -204,6 +228,108 @@ export const onDeleteCampaign = /* GraphQL */ `
       articles {
         nextToken
         startedAt
+      }
+    }
+  }
+`;
+export const onCreateTagArticle = /* GraphQL */ `
+  subscription OnCreateTagArticle {
+    onCreateTagArticle {
+      id
+      tagID
+      articleID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      tag {
+        id
+        label
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      article {
+        id
+        title
+        content
+        campaignId
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const onUpdateTagArticle = /* GraphQL */ `
+  subscription OnUpdateTagArticle {
+    onUpdateTagArticle {
+      id
+      tagID
+      articleID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      tag {
+        id
+        label
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      article {
+        id
+        title
+        content
+        campaignId
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const onDeleteTagArticle = /* GraphQL */ `
+  subscription OnDeleteTagArticle {
+    onDeleteTagArticle {
+      id
+      tagID
+      articleID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      tag {
+        id
+        label
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      article {
+        id
+        title
+        content
+        campaignId
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
       }
     }
   }

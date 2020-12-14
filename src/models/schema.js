@@ -16,6 +16,20 @@ export const schema = {
                     "type": "String",
                     "isRequired": true,
                     "attributes": []
+                },
+                "TagArticles": {
+                    "name": "TagArticles",
+                    "isArray": true,
+                    "type": {
+                        "model": "TagArticle"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "tag"
+                    }
                 }
             },
             "syncable": true,
@@ -29,6 +43,99 @@ export const schema = {
                     "type": "auth",
                     "properties": {
                         "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "TagArticle": {
+            "name": "TagArticle",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "tag": {
+                    "name": "tag",
+                    "isArray": false,
+                    "type": {
+                        "model": "Tag"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "tagID"
+                    }
+                },
+                "article": {
+                    "name": "article",
+                    "isArray": false,
+                    "type": {
+                        "model": "Article"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "articleID"
+                    }
+                }
+            },
+            "syncable": true,
+            "pluralName": "TagArticles",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {
+                        "queries": null
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byTag",
+                        "fields": [
+                            "tagID",
+                            "articleID"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byArticle",
+                        "fields": [
+                            "articleID",
+                            "tagID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
                             {
                                 "allow": "public",
                                 "operations": [
@@ -105,6 +212,20 @@ export const schema = {
                     "association": {
                         "connectionType": "BELONGS_TO",
                         "targetName": "campaignId"
+                    }
+                },
+                "tags": {
+                    "name": "tags",
+                    "isArray": true,
+                    "type": {
+                        "model": "TagArticle"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "article"
                     }
                 }
             },
@@ -268,5 +389,5 @@ export const schema = {
             }
         }
     },
-    "version": "3287a7c17f9370de9faef5ab02af88b9"
+    "version": "843d7bf6455498f2265f1aad7bbda91c"
 };

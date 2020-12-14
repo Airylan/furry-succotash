@@ -30,10 +30,10 @@ export const Article = (props) => {
         }
         {article?.tags?.map((tag) =>
             <Chip
-                key={tag}
-                label={tag}
+                key={tag.id}
+                label={tag.label}
                 component="a"
-                href={`/campaign/${campaignId}/tag/${tag}`}
+                href={`/campaign/${campaignId}/tag/${tag.id}`}
                 clickable
             />
         )}
