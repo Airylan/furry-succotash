@@ -11,7 +11,7 @@ const tagStore = createStore({
             if (getState().loading === true) return;
 
             setState({ loading: true });
-            const models = await DataStore.query(Tag/*, c => c.article.campaignId === campaignId*/);
+            const models = await DataStore.query(Tag, c => c.campaignId === campaignId);
             console.log(models);
             setState({ tags: models, loading: false });
         },

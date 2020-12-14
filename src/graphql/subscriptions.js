@@ -6,6 +6,7 @@ export const onCreateTag = /* GraphQL */ `
     onCreateTag {
       id
       label
+      campaignID
       _version
       _deleted
       _lastChangedAt
@@ -23,6 +24,7 @@ export const onUpdateTag = /* GraphQL */ `
     onUpdateTag {
       id
       label
+      campaignID
       _version
       _deleted
       _lastChangedAt
@@ -40,6 +42,7 @@ export const onDeleteTag = /* GraphQL */ `
     onDeleteTag {
       id
       label
+      campaignID
       _version
       _deleted
       _lastChangedAt
@@ -187,6 +190,10 @@ export const onCreateCampaign = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      Tags {
+        nextToken
+        startedAt
+      }
       articles {
         nextToken
         startedAt
@@ -206,6 +213,10 @@ export const onUpdateCampaign = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      Tags {
+        nextToken
+        startedAt
+      }
       articles {
         nextToken
         startedAt
@@ -225,6 +236,10 @@ export const onDeleteCampaign = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      Tags {
+        nextToken
+        startedAt
+      }
       articles {
         nextToken
         startedAt
@@ -246,6 +261,7 @@ export const onCreateTagArticle = /* GraphQL */ `
       tag {
         id
         label
+        campaignID
         _version
         _deleted
         _lastChangedAt
@@ -280,6 +296,7 @@ export const onUpdateTagArticle = /* GraphQL */ `
       tag {
         id
         label
+        campaignID
         _version
         _deleted
         _lastChangedAt
@@ -314,6 +331,7 @@ export const onDeleteTagArticle = /* GraphQL */ `
       tag {
         id
         label
+        campaignID
         _version
         _deleted
         _lastChangedAt

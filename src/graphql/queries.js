@@ -11,6 +11,7 @@ export const listTags = /* GraphQL */ `
       items {
         id
         label
+        campaignID
         _version
         _deleted
         _lastChangedAt
@@ -27,6 +28,7 @@ export const getTag = /* GraphQL */ `
     getTag(id: $id) {
       id
       label
+      campaignID
       _version
       _deleted
       _lastChangedAt
@@ -55,6 +57,7 @@ export const syncTags = /* GraphQL */ `
       items {
         id
         label
+        campaignID
         _version
         _deleted
         _lastChangedAt
@@ -194,6 +197,10 @@ export const getCampaign = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      Tags {
+        nextToken
+        startedAt
+      }
       articles {
         nextToken
         startedAt

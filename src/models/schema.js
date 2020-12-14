@@ -30,6 +30,13 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "tag"
                     }
+                },
+                "campaignID": {
+                    "name": "campaignID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -38,6 +45,15 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byCampaign",
+                        "fields": [
+                            "campaignID"
+                        ]
+                    }
                 },
                 {
                     "type": "auth",
@@ -308,6 +324,20 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "campaign"
                     }
+                },
+                "Tags": {
+                    "name": "Tags",
+                    "isArray": true,
+                    "type": {
+                        "model": "Tag"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "campaignID"
+                    }
                 }
             },
             "syncable": true,
@@ -389,5 +419,5 @@ export const schema = {
             }
         }
     },
-    "version": "843d7bf6455498f2265f1aad7bbda91c"
+    "version": "788b611f0f8321490a4f638b13118038"
 };

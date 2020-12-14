@@ -23,6 +23,7 @@ export declare class Tag {
   readonly id: string;
   readonly label: string;
   readonly TagArticles?: (TagArticle | null)[];
+  readonly campaignID: string;
   constructor(init: ModelInit<Tag>);
   static copyOf(source: Tag, mutator: (draft: MutableModel<Tag>) => MutableModel<Tag> | void): Tag;
 }
@@ -54,6 +55,7 @@ export declare class Campaign {
   readonly description?: string;
   readonly gm: string;
   readonly articles?: (Article | null)[];
+  readonly Tags?: (Tag | null)[];
   constructor(init: ModelInit<Campaign>);
   static copyOf(source: Campaign, mutator: (draft: MutableModel<Campaign>) => MutableModel<Campaign> | void): Campaign;
 }

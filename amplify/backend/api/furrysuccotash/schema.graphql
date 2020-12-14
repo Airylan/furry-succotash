@@ -12,10 +12,11 @@ type CreatedDates {
   ic: AWSDate
 }
 
-type Tag @model @auth(rules: [{allow: public}]) {
+type Tag @model @auth(rules: [{allow: public}]) @key(name: "byCampaign", fields: ["campaignID"]) {
   id: ID!
   label: String!
   TagArticles: [TagArticle] @connection(keyName: "byTag", fields: ["id"])
+  campaignID: ID!
 }
 
 type Article @model @auth(rules: [{allow: public}]) @key(name: "byCampaign", fields: ["campaignId", "title"]) {
@@ -36,6 +37,7 @@ type Campaign @model @auth(rules: [{allow: public}]) {
   description: String
   gm: AWSEmail!
   articles: [Article] @connection(keyName: "byCampaign", fields: ["id"])
+  Tags: [Tag] @connection(keyName: "byCampaign", fields: ["id"])
 }
 
 type TagArticle @model(queries: null) @key(name: "byTag", fields: ["tagID", "articleID"]) @key(name: "byArticle", fields: ["articleID", "tagID"]) @auth(rules: [{allow: public}, {allow: public}]) {
