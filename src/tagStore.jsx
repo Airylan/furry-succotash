@@ -14,6 +14,23 @@ const tagStore = createStore({
             const models = await DataStore.query(Tag/*, c => c.article.campaignId === campaignId*/);
             console.log(models);
             setState({ tags: models, loading: false });
+        },
+        loadTag: (tagId) => async ({ getState, setState }) => {
+            if (getState().loading === true) return;
+
+            setState({ loading: true });
+            const model = await DataStore.query(Tag, tagId);
+            console.log(model);
+            setState({ tags: [model], loading: false });
+        },
+        fetchArticlesByTag: (tagId) => async ({ getState, setState }) => {
+            if (getState().loading === true) return;
+
+            setState({ loading: true });
+            const articles = await DataStore.query(TagArticle, c => c.tag.id === tagId);
+            const tags = getState().tags.map(x => x.id === tagId ? { ...x, articles: articles.map(c => c.article) } : x);
+            console.log(tags);
+            setState({ tags: tags, loading: false });
         }
     }
 });

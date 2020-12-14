@@ -1,17 +1,22 @@
-﻿import React from 'react';
+﻿import React, { useEffect } from 'react';
 import { Typography, Chip, Paper } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
-import { useCampaign } from './campaignStore';
+import { useTags } from './tagStore';
 
 export const TagList = (props) => {
     const { campaignId } = useParams();
-    const [campaign, { }] = useCampaign(campaignId);
-    const tagChips = campaign?.tags?.map(tag =>
+    const [tagStore, { loadTags }] = useTags();
+
+    useEffect(async () => {
+        await loadTags(campaignId);
+    }, [campaignId]);
+
+    const tagChips = tagStore?.tags?.map(tag =>
         <Chip
-            key={tag}
-            label={tag}
+            key={tag.id}
+            label={tag.label}
             component="a"
-            href={`/campaign/${campaignId}/tag/${tag}`}
+            href={`/campaign/${campaignId}/tag/${tag.id}`}
             clickable
         />
     );
