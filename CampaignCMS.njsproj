@@ -177,6 +177,9 @@
     </Content>
     <Content Include="src\Tag.jsx" />
     <Content Include="src\Taglist.jsx" />
+    <Content Include="src\tagStore.jsx">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\TitleBar.jsx" />
     <Content Include="webpack.config.js">
       <SubType>Code</SubType>

@@ -42,8 +42,8 @@ const options = {
 const markTags = (toLink, tags, text) => {
     return tags?.reduce(
         (previous, next) =>
-            previous?.replace(new RegExp(`(${next}\\S*)`, 'ig'),
-                `[$1](${toLink?.(next)??next})`),
+            previous?.replace(new RegExp(`(${next.label}\\S*)`, 'ig'),
+                `[$1](${toLink?.(next)??next.id})`),
         text
     ) ?? text;
 };
