@@ -1,18 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import 'babel-polyfill';
-import clsx from 'clsx';
 import ReactDOM from 'react-dom';
-import { Switch, Route, Redirect, BrowserRouter, useParams } from "react-router-dom";
+import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
 
-import {
-    Typography, CssBaseline, Paper, List, ListItem
-} from '@material-ui/core';
-import { ListItemLink } from './ListItemLink';
-import { NavBar } from './NavBar';
+import { Typography } from '@material-ui/core';
 import { Article } from './Article';
-import { TitleBar } from './TitleBar';
-import { useStyles } from './styles';
-import { useCampaign, useCampaigns } from './campaignStore';
 import { CampaignDetails } from './CampaignDetails';
 import { ArticleList } from './ArticleList';
 import { Tag } from './Tag';
@@ -20,6 +12,9 @@ import { TagList } from './Taglist';
 
 import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
+import { CampaignList } from './CampaignList';
+import { MainWindow } from './MainWindow';
+import { EditArticle } from './EditArticle';
 Amplify.configure(awsconfig);
 
 const NoRoute = () => {
@@ -27,53 +22,6 @@ const NoRoute = () => {
 };
 const NotImplemented = () => {
     return (<Typography paragraph>Content not implemented.</Typography>);
-};
-
-const EditArticle = NotImplemented;
-
-const CampaignList = () => {
-    const [campaignStore, { loadCampaigns }] = useCampaigns();
-
-    useEffect(() => { loadCampaigns() }, []);
-
-    return (<Paper elevation={2}>
-        <Typography variant="h2">Campaigns</Typography>
-        {campaignStore.campaigns.map(
-            campaign => {
-                return (<ListItemLink
-                    to={`/campaign/${campaign.id}`}
-                    primary={campaign.title}
-                    key={campaign.id}
-                />);
-            }
-        )}
-    </Paper>);
-};
-
-const MainWindow = (props) => {
-    const classes = useStyles();
-    const [drawerIsOpen, setDrawerIsOpen] = React.useState(false);
-    const { campaignId } = useParams();
-    const [campaign] = useCampaign(campaignId);
-
-    useEffect(() => {
-        document.title = campaign?.title;
-    }, [campaign?.title]);
-
-    return (<div className={classes.root}>
-        <CssBaseline />
-        <TitleBar drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} />
-        <NavBar drawerIsOpen={drawerIsOpen} setDrawerIsOpen={setDrawerIsOpen} campaignId={campaignId} />
-        {/* Main body is the router switch */}
-        <main
-            className={clsx(classes.content, {
-                [classes.contentShift]: drawerIsOpen,
-            })}
-        >
-            <div className={classes.offset} />
-            <React.Fragment {...props} />
-        </main>
-    </div>);
 };
 
 const App = () => {

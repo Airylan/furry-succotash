@@ -156,16 +156,20 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\Article.jsx" />
+    <Content Include="src\ArticleDisplay.jsx" />
     <Content Include="src\ArticleList.jsx" />
     <Content Include="src\articleStore.jsx">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\CampaignList.jsx" />
     <Content Include="src\campaignStore.jsx">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\EditArticle.jsx" />
     <Content Include="src\graphql\mutations.js" />
     <Content Include="src\graphql\queries.js" />
     <Content Include="src\graphql\subscriptions.js" />
+    <Content Include="src\MainWindow.jsx" />
     <Content Include="src\Markdown.jsx">
       <SubType>Code</SubType>
     </Content>

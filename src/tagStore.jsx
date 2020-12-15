@@ -11,7 +11,7 @@ const tagStore = createStore({
             if (getState().loading === true) return;
 
             setState({ loading: true });
-            const models = await DataStore.query(Tag, c => c.campaignId === campaignId);
+            const models = await DataStore.query(Tag, c => c.campaignID === campaignId);
             console.log(models);
             setState({ tags: models, loading: false });
         },
@@ -27,7 +27,7 @@ const tagStore = createStore({
             if (getState().loading === true) return;
 
             setState({ loading: true });
-            const articles = await DataStore.query(TagArticle, c => c.tag.id === tagId);
+            const articles = await DataStore.query(TagArticle);//, c => c.tag.id === tagId);
             const tags = getState().tags.map(x => x.id === tagId ? { ...x, articles: articles.map(c => c.article) } : x);
             console.log(tags);
             setState({ tags: tags, loading: false });
