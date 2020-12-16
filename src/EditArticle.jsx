@@ -9,51 +9,40 @@ import { Article } from './models';
 
 import { useStyles } from './styles';
 import { ArticleDisplay } from './ArticleDisplay';
+import { useArticle } from './articleStore';
 
 export const EditArticle = () => {
     const classes = useStyles();
 
-    const { campaignId } = useParams();
+    const { campaignId, articleId } = useParams();
     const [tagStore, { loadTags }] = useTags();
 
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-    const [articleId, setArticleId] = useState("");
+    const [baseArticle, { loadArticle, saveArticle }] = useArticle(articleId);
+
+    const [title, setTitle] = useState(baseArticle?.title??"");
+    const [content, setContent] = useState(baseArticle?.content??"");
+    const [id, setArticleId] = useState(articleId??"");
 
     useEffect(async () => {
-        loadTags(campaignId);
+        await loadArticle(articleId);
+        setTitle(baseArticle?.title??"");
+        setContent(baseArticle?.content??"");
+    }, [articleId]);
+
+    useEffect(async () => {
+        await loadTags(campaignId);
     }, [campaignId]);
 
     // TODO: this needs to move into the article store somehow.
     const article = {
         title,
         content,
-        articleId
+        articleId: id
     };
 
-    // TODO: this needs to save the returned article ID so that if we do updates on this page
-    //       we continue using the same article
     // TODO: this needs authentication before we actually do the thing.
-    const saveArticle = async (e) => {
-        return;
-
-        (articleId === "")
-            ? setArticleId(await DataStore.save(
-                new Article({
-                    "title": article.title,
-                    "content": article.content,
-                    "campaignId": campaignId,
-                    "tags": []
-                })
-            ))
-            : /* Models in DataStore are immutable. To update a record you must use the copyOf function
- to apply updates to the item’s fields rather than mutating the instance directly */
-            await DataStore.save(Article.copyOf(CURRENT_ITEM, item => {
-                // Update the values on {item} variable to update DataStore entry
-                    article.title,
-                    article.content,
-                    article.campaignId
-            }));
+    const saveArticleToDataStore = async (e) => {
+        // setArticleId(await saveArticle(article));
     };
 
     return (<Paper elevation={2}>
@@ -69,7 +58,7 @@ export const EditArticle = () => {
                         size="large"
                         className={classes.button}
                         startIcon={<SaveIcon />}
-                        onClick={saveArticle}
+                        onClick={saveArticleToDataStore}
                     >
                         Save
                     </Button>

@@ -35,6 +35,9 @@ const App = () => {
         <Route path="/campaign/:campaignId/article/create">
             <MainWindow><EditArticle /></MainWindow>
         </Route>
+        <Route path="/campaign/:campaignId/article/:articleId/edit">
+            <MainWindow><EditArticle /></MainWindow>
+        </Route>
         <Route path="/campaign/:campaignId/article/:articleId">
             <MainWindow><Article /></MainWindow>
         </Route>

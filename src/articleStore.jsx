@@ -50,10 +50,6 @@ const articleStore = createStore({
         ]
     },
     actions: {
-        setArticles: (articles) => ({ setState }) => setState({ articles: articles }),
-        setArticle: (article) => ({ getState, setState }) => {
-            setState({ articles: getState().articles.map(x => x.id === article.id ? article : x) });
-        },
         loadArticles: () => async ({ getState, setState }) => {
             if (getState().loading === true) return;
 
@@ -70,6 +66,27 @@ const articleStore = createStore({
             const tags = await DataStore.query(TagArticle, c => c.article.id === articleId);
             console.log(model);
             setState({ articles: [{ ...model, tags: tags.map(x => x.tag) }], loading: false });
+        },
+        saveArticle: ({ articleId, ...article }) => async ({ dispatch }) => {
+            let result = {};
+            if (articleId) {
+                // This is an update action
+                const original = await DataStore.query(Article, articleId);
+                result = await DataStore.save(Article.copyOf(original, update => {
+                    update.title = article?.title ?? original.title;
+                    update.content = article?.content ?? original.title;
+                    update.gmInfo = article?.gmInfo ?? original.gmInfo;
+                    update.playerInfo = article?.playerInfo ?? original.playerInfo;
+                    update.createdDate = article?.createdDate ?? original.createdDate;
+                    update.campaign = article?.campaign ?? original.campaign;
+                }));
+            }
+            else {
+                result = await DataStore.save(new Article(article));
+            }
+
+            dispatch(loadArticle(result.id));
+            return articleId;
         }
     }
 });
